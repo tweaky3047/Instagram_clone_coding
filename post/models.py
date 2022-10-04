@@ -7,15 +7,23 @@ class PostModel(models.Model):
     class Meta:
         db_table = "post"
 
-    author     = models.ForeignKey(UserModel, on_delete=models.CASCADE)
-    # pf_image   = models.ForeignKey('Pf_image', on_delete=models.CASCADE, upload_to='timeline_photo/%Y/%m/%d/%h/%s')
-    # post_image = models.ImageField()
+    author     = models.ForeignKey('user.UserModel', on_delete=models.CASCADE)
     text       = models.CharField(max_length=255, blank=True)
     # charfield의 제한이 255까지라 수정해 두었습니다.
     like_count = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    hashtag = models.CharField(max_length=30)
+    # hashtag = models.CharField(max_length=30)
+    
+class Image(models.Model):
+    class Meta:
+        db_table="images"
+        
+    image_url = models.URLField(max_length=2000)
+    post_image = models.ImageField()
+    PostModel   = models.ForeignKey('post.PostModel', on_delete=models.CASCADE)
+        
+        
 
 class CommentModel(models.Model) :
     class Meta :
