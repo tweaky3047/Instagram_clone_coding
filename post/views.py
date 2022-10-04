@@ -65,3 +65,6 @@ def post_detail(request):
         my_post.content = request.POST.get('post', '')  
         my_post.save()
         return redirect('/user')
+
+def post_view(request) :
+    pass
