@@ -1,6 +1,5 @@
-from django.contrib import admin
-from .models import PostModel,Feed
-
-# Register your models here.
+from .models import CommentModel, Image, PostModel,Feed
 admin.site.register(PostModel)
+admin.site.register(CommentModel)
 admin.site.register(Feed)
+
