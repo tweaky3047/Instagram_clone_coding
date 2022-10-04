@@ -15,7 +15,8 @@ class PostModel(models.Model):
     like_count = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    hashtag = models.CharField(max_length=30)
+    # hashtag = models.CharField(max_length=30)
+    # 해시태그는 시간 남으면 구현
 
 class CommentModel(models.Model) :
     class Meta :
