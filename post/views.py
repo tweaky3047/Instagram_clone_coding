@@ -1,13 +1,13 @@
 
 from django.shortcuts import render, redirect
 from post.models import PostModel
-
 from post.models import CommentModel
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # class Post()
 
-def post_view(request):
+def post_detail(request):
     if request.method == 'POST':
         comment = request.POST.get("comment", "")
         post = PostModel.objects.get(id=id)
@@ -32,20 +32,24 @@ def delete_post(request):
     pass
 
 def write_comment(request, id) :
-    pass
+    comment = CommentModel.objects.get(id=id)
+    post = comment.post.id
+    comment.delete()
+    return redirect ('/post/')
 
+@login_required
 def delete_comment(request, id) :
     comment = CommentModel.objects.all(id=id)
     post = comment.post.id
     comment.delete()
-    return redirect('/tweet/'+str(post))
+    return redirect('/post/'+str(post))
 
-def post_view(request):
+def post_detail(request):
     if request.method == 'GET': 
         user = request.user.is_authenticated 
         if user:  
             all_post = PostModel.objects.all().order_by('-created_at')
-            return render(request, 'post/home.html', {'post': all_post})
+            return render(request, 'post/post.html', {'post': all_post})
         else: 
             return redirect('/sign-in')
     elif request.method == 'POST': 
