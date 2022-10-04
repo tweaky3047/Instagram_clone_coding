@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Posts</title>
 
     <!--google material symbols-->
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Jquery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <style>
-
         * {
             box-sizing: border-box;
             font-family: 'helvetica neue', 'Apple SD Gothic Neo', Roboto, Helvetica, Arial, sans-serif;
@@ -24,12 +24,14 @@
             margin: 0;
         }
 
-        p, span {
+        p,
+        span {
             font-size: 14px;
         }
 
         /* general */
-        ul, li {
+        ul,
+        li {
             margin: 0;
             padding: 0;
             list-style-type: none;
@@ -278,87 +280,87 @@
 </head>
 
 <body>
-<div class="post-detail">
-    <!-- post pic -->
-    <article>
-        <div class="post-picture">
-            <img style="width: 100%"
-                 src="https://images.hola.com/us/images/0273-14902c5fc22d-362234165d3d-1000/square-800/rosal-a-will-perform-her-forthcoming-album-motomami-in-a-unique-experience-on-tiktok-live.jpg">
-        </div>
-    </article>
-    <article>
-        <div class="post-description">
-            <header>
-                <div class="profile-of-article">
+    <div class="post-detail">
+        <!-- post pic -->
+        <article>
+            <div class="post-picture">
+                <img style="width: 100%"
+                    src="https://images.hola.com/us/images/0273-14902c5fc22d-362234165d3d-1000/square-800/rosal-a-will-perform-her-forthcoming-album-motomami-in-a-unique-experience-on-tiktok-live.jpg">
+            </div>
+        </article>
+        <article>
+            <div class="post-description">
+                <header>
+                    <div class="profile-of-article">
+                        <img class="img-profile pic"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Rosalia_2019-portrait.jpg/640px-Rosalia_2019-portrait.jpg"
+                            alt="">
+                        <span class="userID main-id point-span">motomami</span>
+                    </div>
+                    <img class="icon-react icon-more"
+                        src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
+                </header>
+                <div class="hl"></div>
+                <!-- description data -->
+                {% for comment in comments %}
+                <div class="description">
                     <img class="img-profile pic"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Rosalia_2019-portrait.jpg/640px-Rosalia_2019-portrait.jpg"
-                         alt="">
-                    <span class="userID main-id point-span">motomami</span>
-                </div>
-                <img class="icon-react icon-more"
-                     src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
-                     alt="more">
-            </header>
-            <div class="hl"></div>
-            <!-- description data -->
-            <div class="description">
-                <img class="img-profile pic"
-                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Rosalia_2019-portrait.jpg/640px-Rosalia_2019-portrait.jpg"
-                     alt="">
-                <span class="userID main-id point-span">motomami</span>
-                <span class="user_description">Raul motomami!</span>
-                <div class="time-log">
-                    <span>32분 전</span>
-                </div>
-                <div class="comment-section">
-                    <ul class="comments" style="display: flex; justify-content: space-between; position: relative">
-                        <li>
-                            <span><img class="img-profile pic"
-                                       src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg"
-                                       alt="">
-                            <span class="userID main-id point-span">rose</span>Raaaul!!</span>
-                        </li>
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Rosalia_2019-portrait.jpg/640px-Rosalia_2019-portrait.jpg"
+                        alt="">
+                    <span class="userID main-id point-span">{{ comment.author }}</span>
+                    <span class="user_description">{{ comment.comment }}</span>
+                    <div class="time-log">
+                        <span>{{ comment.created_at }} </span>
+                    </div>
+                    <div class="comment-section">
+                        <ul class="comments" style="display: flex; justify-content: space-between; position: relative">
+                            <li>
+                                <span><img class="img-profile pic"
+                                        src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg" alt="">
+                                    <span class="userID main-id point-span">rose</span>Raaaul!!</span>
+                            </li>
+                            <div class="time-log">
+                                <span>32분 전</span>
+                            </div>
+                            <li>
+                                <span><img class="img-profile pic"
+                                        src="https://news.nateimg.co.kr/orgImg/pt/2020/11/29/202011291728778761_5fc35f30b03b4.jpeg"
+                                        alt="">
+                                    <span class="userID main-id point-span">bud</span>rose!!!</span>
+                            </li>
+                        </ul>
                         <div class="time-log">
                             <span>32분 전</span>
                         </div>
-                        <li>
-                            <span><img class="img-profile pic"
-                                       src="https://news.nateimg.co.kr/orgImg/pt/2020/11/29/202011291728778761_5fc35f30b03b4.jpeg"
-                                       alt="">
-                            <span class="userID main-id point-span">bud</span>rose!!!</span>
-                        </li>
-                    </ul>
-                    <div class="time-log">
-                        <span>32분 전</span>
                     </div>
                 </div>
-            </div>
-            <div class="hl"></div>
-            <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
-                <div>
-                    <span class="material-symbols-rounded" style="margin: 0 5px 0 0px"> favorite </span>
-                    <span class="material-symbols-rounded" style="margin: 0 5px"> mode_comment </span>
-                    <span class="material-symbols-rounded" style="margin: 0 5px"> send </span>
+                {% endfor %}
+                <div class="hl"></div>
+                <div
+                    style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
+                    <div>
+                        <span class="material-symbols-rounded" style="margin: 0 5px 0 0px"> favorite </span>
+                        <span class="material-symbols-rounded" style="margin: 0 5px"> mode_comment </span>
+                        <span class="material-symbols-rounded" style="margin: 0 5px"> send </span>
+                    </div>
+                    <div>
+                        <span class="material-symbols-rounded"> bookmark </span>
+                    </div>
                 </div>
-                <div>
-                    <span class="material-symbols-rounded"> bookmark </span>
+                <div class="reaction">
+                    <div class="liked-people">
+                        <img class="pic" src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg" alt="">
+                        <p><span class="point-span">rose</span>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
+                    </div>
+                    <div class="time-log">
+                        <span>10월 2일</span>
+                    </div>
+                    <div class="comment">
+                        <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기...">
+                        <button type="submit" class="submit-comment" disabled>게시</button>
+                    </div>
                 </div>
-            </div>
-            <div class="reaction">
-                <div class="liked-people">
-                    <img class="pic"
-                         src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg"
-                         alt="">
-                    <p><span class="point-span">rose</span>님 <span class="point-span">외 2,412,751명</span>이 좋아합니다</p>
-                </div>
-                <div class="time-log">
-                    <span>10월 2일</span>
-                </div>
-                <div class="comment">
-                    <input id="input-comment" class="input-comment" type="text" placeholder="댓글 달기...">
-                    <button type="submit" class="submit-comment" disabled>게시</button>
-                </div>
-            </div>
-    </article>
+        </article>
 </body>
+
 </html>
