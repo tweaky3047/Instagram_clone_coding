@@ -100,3 +100,4 @@ def post_detail(request):
 
 def post_view(request):
     pass
+
