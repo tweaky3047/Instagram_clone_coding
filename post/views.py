@@ -9,7 +9,6 @@ from uuid import uuid4
 from insta_clone.settings import MEDIA_ROOT
 from django.contrib.auth.decorators import login_required
 
-
 # Create your views here.
 # class Post()
 
@@ -99,3 +98,5 @@ def post_detail(request):
         my_post.save()
         return redirect('/user')
 
+def post_view(request):
+    pass

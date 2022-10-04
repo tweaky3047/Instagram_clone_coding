@@ -12,7 +12,7 @@
     <meta property="og:title" content="instagram">
     <meta property="og:description" content="instagram clone">
     <meta property="og:image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
-    .
+
     <!-- Twitter Meta Tags / 트위터 -->
     <meta name="twitter:card" content="instagram clone">
     <meta name="twitter:title" content="instagram">
@@ -141,35 +141,44 @@
                     <img style="width : 75%;margin : 25px auto; display: block;margin:auto;"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png?20160616034027">
 
-                    <form action="#">
+                    <form method="POST" action="/sign_in/">
+                        {%csrf_token%}
                         <p class="login_user_name">
-                            <input style="margin-top:15px;" type="text" placeholder=" 전화번호, 사용자 이름 또는 이메일">
+                            <input style="margin-top:15px;" type="text" id="phone_number_or_email"
+                                name="phone_number_or_email" placeholder=" 전화번호, 사용자 이름 또는 이메일">
                         </p>
                         </p>
                         <p>
-                            <input type="text" placeholder="비밀번호">
+                            <input type="text" placeholder="비밀번호" id="password" name="password">
                         </p>
                         <input type="submit" id="submit_btn" style="margin-bottom : 15px;" value="로그인"
                             class="submit_btn">
-                        <div style="display:flex;padding : 10px 0; margin-bottom: 15px;">
-                            <hr class="bar"><span style="padding: 0 10px">또는</span>
-                            <hr class="bar">
-                        </div>
-                        <div>
-                            <p style="text-align: center;color :rgb(30, 151, 231);"><span><img
-                                        style="width:8%;vertical-align: middle;"
-                                        src="https://www.freepnglogos.com/uploads/logo-facebook-png/logo-facebook-facebook-logo-transparent-png-pictures-icons-and-0.png"></span><a
-                                    href="#">Facebook으로 로그인</a></p>
-                        </div>
-                        <p style="text-align: center; font-size: 15px;">비밀번호를 잊으셨나요?</p>
-                        <div class="bottom_box">
-                            <div>
-                                <p style="font-size: 15px;">
-                                    계정이 없으신가요?<a href="#">가입하기</a></p>
-                            </div>
-                        </div>
+                        <form class="form-area">
 
-                    </form>
+                            <div style="display:flex;padding : 10px 0; margin-bottom: 15px;">
+                                <hr class="bar"><span style="padding: 0 10px">또는</span>
+                                <hr class="bar">
+                            </div>
+                            <div>
+                                <p style="text-align: center;color :rgb(30, 151, 231);"><span><img
+                                            style="width:8%;vertical-align: middle;"
+                                            src="https://www.freepnglogos.com/uploads/logo-facebook-png/logo-facebook-facebook-logo-transparent-png-pictures-icons-and-0.png"></span><a
+                                        href="#">Facebook으로 로그인</a></p>
+                            </div>
+                            {% if error %}
+                            <div class="alert alert-danger" role="alert" style="color:red; font-size: 13px">
+                                {{ error }}
+                            </div>
+                            {% endif %}
+                            <p style="text-align: center; font-size: 15px;">비밀번호를 잊으셨나요?</p>
+                            <div class="bottom_box">
+                                <div>
+                                    <p style="font-size: 15px;">
+                                        계정이 없으신가요?<a href="#">가입하기</a></p>
+                                </div>
+                            </div>
+
+                        </form>
 
 
                 </div>
