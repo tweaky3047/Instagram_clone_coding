@@ -1,8 +1,14 @@
 
 from django.shortcuts import render, redirect
-from post.models import PostModel
+from post.models import PostModel,Feed
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from post.models import CommentModel
+import os
+from uuid import uuid4
+from insta_clone.settings import MEDIA_ROOT
 from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 # class Post()
@@ -33,6 +39,33 @@ def delete_post(request):
 
 def write_comment(request, id) :
     pass
+
+
+def delete_comment(request) :
+    pass
+
+class UploadFeed(APIView):
+    def post(self, request):
+        file = request.FILES['file']
+
+        uuid_name = uuid4().hex
+        save_path = os.path.join(MEDIA_ROOT, uuid_name)
+
+        with open(save_path, 'wb+') as destination:
+            for chunk in file.chunks():
+                destination.write(chunk)
+
+        
+        image =  uuid_name
+        content = request.data.get('content')
+        user_id = request.data.get('user_id')
+        profile_image = request.data.get('profile_image')
+
+        Feed.objects.create(image = image, content=content, user_id=user_id, profile_image=profile_image)
+
+       
+
+        return Response(status=200)
 
 @login_required
 def upload_comment(request, id) :
@@ -66,5 +99,8 @@ def post_detail(request):
         my_post.save()
         return redirect('/user')
 
+
 def post_view(request) :
     pass
+
+
