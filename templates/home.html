@@ -258,7 +258,7 @@
                 class="container-fluid"
                 style="justify-content: space-between; flex-wrap: nowrap; min-width: 1000px; background-color: #fefefe">
                 <a class="navbar-brand" href="#"><img
-                    style="width: 100px;background-color: #fefefe; "
+                    style="width: 100px;background-color: #fefefe;font-size: 30px; "
                     src="https://fontmeme.com/images/instagram-new-logo.png"/></a>
                 <input
                     class="form-control me-2"
@@ -272,11 +272,11 @@
                         style="font-size: 30px; margin-right:10px;">
                         home
                     </span>
-                    <span
+                    <a class="link" href="/user"><span
                         class="material-symbols-rounded"
-                        style="font-size: 30px; margin-right:10px;">
+                        style="font-size: 30px; margin-right:10px; color: black;">
                         send
-                    </span>
+                    </span></a>
 
                     
                     <span id="nav_bar_add_box" class="material-symbols-rounded" style="font-size: 30px; margin-right:10px;"> add_box </span>
@@ -437,9 +437,11 @@
 
                 </div>
 
+                {% block content %}
                 <!--feed 2-->
-                <div
+                <form action="{% url 'home'%}" method="POST"
                     style="border: solid 1px #dbdbdb; background-color: white; margin-top: 20px; border-radius: 10px;">
+                    {% csrf_token %}
                     <div
                         style="display: flex; flex-direction: row; align-items: center; margin: 0 10px">
                         <div class="box" style="width: 50px; height: 50px; background: #bdbdbd">
@@ -455,7 +457,7 @@
                     <div>
                         <img
                             style="width: 100%"
-                            src="{{ post.post_image}}"/>
+                            src="{{ post.post_image }}"/>
                     </div>
                     <div
                         style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
@@ -480,25 +482,25 @@
                         <img
                             class="profile"
                             style="width: 30px; height: 30px; border-radius: 70%"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4QxwyZqH07Rqw&usqp=CAU"/>
+                            src="{{ post.post_image }}"/>
 
-                        <div style="text-align: left; font-size: 14px; margin-left: 5px">김민규
-                            <b>외 20명</b>이 좋아합니다.</div>
+                        <div style="text-align: left; font-size: 14px; margin-left: 5px">{{ post.PostModel.author }}
+                            <b>외 {{ post.like_count }}명</b>이 좋아합니다.</div>
                     </div>
                     <div style="text-align: left; font-size: 15px; margin-left: 5px">
-                        <b>아이디 자리</b>
-                        드디어 엘가시아로의 여행!</div>
+                        <b>{{ post.author }}</b>
+                        {{ post.text }} </div>
                     <div
                         style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
                     <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                        <b>아이디 자리</b>
-                        우리도 가고싶어...</div>
+                        <b>{{ post.CommentModel.author }}</b>
+                        {{ post.comment}}</div>
                     <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                        <b>아이디 자리</b>
-                        나는 아직도 루테란인데...</div>
+                        <b>{{ post.CommentModel.author }}</b>
+                        {{ post.CommentModel.author }}</div>
                     <div
                         style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray"
-                        ">실시간 시간</div>
+                        >{{ post.created_at }}</div>
                     <div>
                         <div
                             style="display: flex; align-items: center;border-top:  solid 0.5px #efefef;; margin-left: 10px;">
@@ -511,7 +513,8 @@
                         </div>
                     </div>
 
-                </div>
+                </form>
+                {% endblock %}
             </div>
 
             <!--right box-->
