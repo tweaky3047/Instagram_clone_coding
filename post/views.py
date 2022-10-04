@@ -32,17 +32,23 @@ def delete_post(request):
     pass
 
 def write_comment(request, id) :
-    comment = CommentModel.objects.get(id=id)
-    post = comment.post.id
-    comment.delete()
-    return redirect ('/post/')
+    pass
+
+@login_required
+def upload_comment(request, id) :
+    if request.method == 'POST' :
+        comment = CommentModel.objects.all(id=id)
+        post = comment.post.id
+        comment.put()
+        return redirect('/post/'+str(id=id))
 
 @login_required
 def delete_comment(request, id) :
-    comment = CommentModel.objects.all(id=id)
-    post = comment.post.id
-    comment.delete()
-    return redirect('/post/'+str(post))
+    if request.method == 'POST' :
+        comment = CommentModel.objects.all(id=id)
+        post = comment.post.id
+        comment.delete()
+        return redirect('/post/'+str(post))
 
 def post_detail(request):
     if request.method == 'GET': 
