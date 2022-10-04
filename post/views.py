@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from post.models import PostModel
 
+from post.models import CommentModel
+
 # Create your views here.
 # class Post()
 def post_view(request):
