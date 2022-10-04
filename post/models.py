@@ -2,7 +2,9 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from user.models import UserModel
 from django.contrib.auth.models import AbstractUser
-
+from django.utils import timezone
+import django
+from django import utils
 class PostModel(models.Model):
     class Meta:
         db_table = "post"
@@ -15,6 +17,13 @@ class PostModel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     # hashtag = models.CharField(max_length=30)
 
+class Feed(models.Model):
+    content = models.TextField()    # 글내용
+    image = models.TextField()  # 피드 이미지
+    profile_image = models.TextField()
+    user_id = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True,)
+    updated_at = models.DateTimeField(auto_now=True, ) 
     
 class Image(models.Model):
     class Meta:
