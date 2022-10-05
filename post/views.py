@@ -1,24 +1,22 @@
 
 from django.shortcuts import render, redirect
-from post.models import PostModel, Feed
+from .models import Feed,CommentModel
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from post.models import CommentModel
 import os
 from uuid import uuid4
 from insta_clone.settings import MEDIA_ROOT
 from django.contrib.auth.decorators import login_required
-
 from user.models import UserModel
 
 # Create your views here.
 # class Post()
 
 
-def post_detail(request, ):
+def post_detail(request, id):
     if request.method == 'POST':
         comment = request.POST.get("comment", "")
-        post = PostModel.objects.get(id=id)
+        post = Feed.objects.get(id=id)
 
         comments = CommentModel()
         comments.comment = comment
@@ -37,8 +35,6 @@ def detail_tweet(request, id):
     return render(request,'tweet/tweet_detail.html',{'feed':feed,'comment':tweet_comment})
 
 
-# def post_detail(request):
-#     return render(request, 'post/post_detail.html')
 
 def delete_post(request):
     pass
@@ -74,13 +70,21 @@ class UploadFeed(APIView):
         return Response(status=200)
 
 
+
 @login_required
 def upload_comment(request, id):
+    print("연결되었습니다.")
     if request.method == 'POST':
-        comment = CommentModel.objects.all(id=id)
-        post = comment.post.id
-        comment.put()
-        return redirect('/post/'+str(id=id))
+        comment = request.POST.get("input-comments","")
+        current_post = Feed.objects.get(id=id)
+       
+        ct = CommentModel()
+        ct.comment = comment
+        ct.author = request.user
+        ct.post = current_post
+        ct.save()
+        print("연결되었습니다.")
+        return redirect('/post/post/'+str(id))
 
 
 @login_required
@@ -95,8 +99,8 @@ def delete_comment(request, id):
 def post_detail(request, id):
     feed = Feed.objects.get(id=id)
     user = UserModel.objects.get(username=feed.user_id)
-    comment = CommentModel.objects.filter(author=id).order_by('-created_at')
-    return render(request,'post/post.html',{'feed':feed,'comment':comment,'user':user})
+    comments = CommentModel.objects.filter(author=id).order_by('-created_at')
+    return render(request,'post/post.html',{'feed':feed,'comments':comments,'user':user})
 
 
 
