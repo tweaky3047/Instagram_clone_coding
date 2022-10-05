@@ -298,7 +298,6 @@
 
                     <!--댓글 보여주기-->
                     {% for cm in comments %}
-                    ㄴㅇㄹㄴㅇㄹ
                         <div class="comment-section" ~="~">
                             <ul
                                 class="comments"
@@ -311,7 +310,7 @@
                                         <span class="userID main-id point-span">{{cm.author}}</span>{{cm.comment}}</span>
                                 </li>
                                 <div class="time-log">
-                                    <span>{{cm.created_at}}</span>
+                                    <span>{{cm.created_at|timesince}}전</span>
 
                                 </div>
                             </ul>
