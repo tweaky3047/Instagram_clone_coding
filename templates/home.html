@@ -458,7 +458,7 @@
                     
             <!--right box-->
             <div style="width: 400px; height: 1000px; left: 62%;">
-                <div class="right_body">
+                <div class="right_body" style="width: 350px;">
                     <div class="feed_name" style="justify-content: space-between">
                         <div style="display: flex; align-items: center;">
                             {% if user.is_authenticated %}
@@ -512,7 +512,7 @@
                                         </span>
                             {% endif %}
                         </div>
-                        <div class="name_content">
+                        <div class="name_content" style="display: flex; flex-direction: column;">
                             <span class="feed_name_txt">
                                 {{ ul.nickname }} 
                             </span>
@@ -520,9 +520,9 @@
                                 {{ ul.nickname }} 외  {{ ul.follow.count }}명이 팔로우 합니다. </span>
                         </div>
                         {% if ul in user.follow.all %}
-                        <a href="/user/follow/{{ ul.id }}" class="card-link">[팔로우 취소]</a>
+                        <a href="/user/follow/{{ ul.id }}" class="card-link" style="font-size: 14px;">unfollow</a>
                         {% else %}
-                        <a href="/user/follow/{{ ul.id }}" class="card-link">[팔로우]</a>
+                        <a href="/user/follow/{{ ul.id }}" class="card-link" style="font-size: 15px;">follow</a>
                         {% endif %}
                         </a>
                     </div>
