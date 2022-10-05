@@ -102,10 +102,8 @@ def post_detaild(request):
         return redirect('/user')
 
 
-def home_view(request) :
-    all_feed = PostModel.objects.all().order_by('-created_at')
-    comments = CommentModel.objects.all().order_by('-created_at')
-    print('dfsdf')
-    images = Feed.objects.all()
-    return render(request, 'home.html',{'comments':comments, 'posts' : all_feed, 'images':images})
 
+
+def home_view(request) :
+    feeds = Feed.objects.all()
+    return render(request,'home.html',{'feeds':feeds})

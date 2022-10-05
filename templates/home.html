@@ -3,6 +3,7 @@
     <head>
 
         {% csrf_token %}
+        {% load static %}
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -193,7 +194,6 @@
         }
 
         .name_content {
-            display: flex;
             flex-direction: column;
 
         }
@@ -320,61 +320,73 @@
                 <div
                     style="display: flex;flex-direction: row; height:110px; border: solid 1px #dbdbdb; background-color: white; margin-top: 20px; border-radius: 10px;">
                     <!--story box 1-->
+                    
                     <div style="width: 100px; height: 100px;">
                         <div style="margin-top: 15px;">
-                            <img
+                            <A href="https://kmg0485.tistory.com" target="blank">
+                                <img
                                 class="profile, story_circle"
-                                src="https://ca.slack-edge.com/T03NJDS4SF9-U03RDAH9NSV-0433d88ddd99-512"/>
+                                src="https://ca.slack-edge.com/T03NJDS4SF9-U03RDAH9NSV-0433d88ddd99-512"/ >
+                            </A>
                         </div>
                         <div style="margin-top: 5px; font-size: 13px;">김민규</div>
                     </div>
+                
 
-                    <!--story box 2-->
-                    <div style="width: 100px; height: 100px;">
-                        <div style="margin-top: 15px;">
+                <!--story box 2-->
+                <div style="width: 100px; height: 100px;">
+                    <div style="margin-top: 15px;">
+                        <A href="https://dhalsrbbbbbbb.tistory.com/" target="blank">
                             <img
-                                class="profile, story_circle"
-                                src="https://ca.slack-edge.com/T03NJDS4SF9-U03R0K7002F-45c483b170b0-512"/>
-                        </div>
-                        <div style="margin-top: 5px; font-size: 13px;">오민규</div>
+                            class="profile, story_circle"
+                            src="https://ca.slack-edge.com/T03NJDS4SF9-U03R0K7002F-45c483b170b0-512"/ >
+                        </A>
                     </div>
-
-                    <!--story box 3-->
-                    <div style="width: 100px; height: 100px;">
-                        <div style="margin-top: 15px;">
-                            <img
-                                class="profile, story_circle"
-                                src="https://ca.slack-edge.com/T03NJDS4SF9-U03R1KWLTV3-0ebf583a0597-512"/>
-                        </div>
-                        <div style="margin-top: 5px; font-size: 13px;">윤민성</div>
-                    </div>
-
-                    <!--story box 4-->
-                    <div style="width: 100px; height: 100px;">
-                        <div style="margin-top: 15px;">
-                            <img
-                                class="profile, story_circle"
-                                src="https://ca.slack-edge.com/T03NJDS4SF9-U03RZQKHVQA-2ff3ec5582b8-512"/>
-                        </div>
-                        <div style="margin-top: 5px; font-size: 13px;">윤장미</div>
-                    </div>
-
-                    <!--story box 5-->
-                    <div style="width: 100px; height: 100px;">
-                        <div style="margin-top: 15px;">
-                            <img
-                                class="profile, story_circle"
-                                src="https://ca.slack-edge.com/T03NJDS4SF9-U03SA83LUAD-fbf0bdf3d576-512"/>
-                        </div>
-                        <div style="margin-top: 5px; font-size: 13px;">이금빈</div>
-                    </div>
-
+                    <div style="margin-top: 5px; font-size: 13px;">오민규</div>
                 </div>
-                <!--feed 1-->
+
+                <!--story box 3-->
+                <div style="width: 100px; height: 100px;">
+                    <div style="margin-top: 15px;">
+                        <A href="https://tweakycoding.tistory.com/" target="blank">
+                            <img
+                            class="profile, story_circle"
+                            src="https://ca.slack-edge.com/T03NJDS4SF9-U03R1KWLTV3-0ebf583a0597-512"/ >
+                        </A>
+                    </div>
+                    <div style="margin-top: 5px; font-size: 13px;">윤민성</div>
+                </div>
+
+                <!--story box 4-->
+                <div style="width: 100px; height: 100px;">
+                    <div style="margin-top: 15px;">
+                        <A href="https://velog.io/@r5zyoon" target="blank">
+                            <img
+                            class="profile, story_circle"
+                            src="https://ca.slack-edge.com/T03NJDS4SF9-U03RZQKHVQA-2ff3ec5582b8-512"/ >
+                        </A>
+                    </div>
+                    <div style="margin-top: 5px; font-size: 13px;">윤장미</div>
+                </div>
+
+                <!--story box 5-->
+                <div style="width: 100px; height: 100px;">
+                    <div style="margin-top: 15px;">
+                        <A href="https://lgb9811.tistory.com/" target="blank">
+                            <img
+                            class="profile, story_circle"
+                            src="https://ca.slack-edge.com/T03NJDS4SF9-U03SA83LUAD-fbf0bdf3d576-512"/ >
+                        </A>
+                    </div>
+                    <div style="margin-top: 5px; font-size: 13px;">이금빈</div>
+                </div>
+
+            </div>
+                <!--feed 1-->{% for feed in feeds %}
                 <div
                     style="border: solid 1px #dbdbdb; background-color: white; margin-top: 20px; border-radius: 10px;">
                     <div
-                        style="display: flex; flex-direction: row; align-items: center; margin: 0 10px">
+                        style="display: flex;align-items: center; margin: 0 10px">
                         <div class="box" style="width: 50px; height: 50px; background: #bdbdbd">
                             <img
                                 class="profile"
@@ -388,7 +400,7 @@
                     <div>
                         <img
                             style="width: 100%"
-                            src="https://cdn-lostark.game.onstove.com/uploadfiles/notice/654cd1f162e04fc296b6346d85e161a0.png"/>
+                            src="{% get_media_prefix %}{{ feed.image }}"/>
                     </div>
                     <div
                         style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
@@ -416,16 +428,16 @@
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4QxwyZqH07Rqw&usqp=CAU"/>
 
                         
-                    {% for post in posts %}<div style="text-align: left; font-size: 14px; margin-left: 5px">김민규
+                    <div style="text-align: left; font-size: 14px; margin-left: 5px">김민규
                             <b>{{post.like_count}}명</b>이 좋아합니다.</div>
                     </div><div style="text-align: left; font-size: 15px; margin-left: 5px">
                         
-                        {{post.text}}</div>{% endfor %}
+                        {{post.text}}</div>
                     <div
                         style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
-                        {% for comment in comments %}<div style="text-align: left; font-size: 14px; margin-left: 5px">
+                        <div style="text-align: left; font-size: 14px; margin-left: 5px">
                         <b>{{comment.author}}</b>
-                        {{comment.comment}}</div>{% endfor %}
+                        {{comment.comment}}</div>
                     <div
                         style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray">실시간 시간</div>
                     <div>
@@ -441,7 +453,7 @@
                     </div>
 
                 </div>
-                
+                {% endfor %}
             </div>
                     
             <!--right box-->
@@ -451,9 +463,13 @@
                         <div style="display: flex; align-items: center;">
                             {% if user.is_authenticated %}
                             <div class="big_profile_box">
-                                <img
-                                    class="profile_img"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4QxwyZqH07Rqw&usqp=CAU">
+                                {% if user.profile_image %}
+                                <img class="profile_img" src="{{ user.profile_image.url }}"/>
+                                {% else %}
+                                    <span class="material-symbols-outlined" style="font-size:60px; object-fit: cover;">
+                                        account_circle
+                                        </span>
+                                {% endif %}
                             </div>
                             <div class="name_content">
                                 <span class="feed_name_txt">
@@ -464,10 +480,9 @@
                                 </span>
                             </div>
                         </div>
-                       
                                     </span>
                                 </li>
-                                <a class="link_txt" href="/logout" style="font-size=11px">
+                                <a class="link_txt" href="/logout" style="font-size:11px">
                                     로그아웃
                                 </a>
                             </li>
@@ -475,7 +490,7 @@
                     {% endif %}
 
                 </div>
-
+                
                 <div class="recommend_box">
                     <span style="color: gray">
                         회원님을 위한 추천</span>
@@ -483,94 +498,41 @@
                         모두 보기
                     </span>
                 </div>
+                {% block content2 %}
+                
+                {% for ul in user_recommand_list %}
                 <div>
                     <div class="feed_name" style="justify-content: space-between">
                         <div class="profile_box">
-                            <img
-                                class="profile_img"
-                                src="https://w.namu.la/s/a089805b90f65666586156545e3a1a7b9902f21ba4633ee03f23e370edb4b77941cf82125e9acd2ba3872851f93896a89062ee40705a758cd7c2bdd523ad37bb198eae165cbc4c85fef72d788d1002c6b2e252db30372f057a710d62f6f40caed947cb5634c81cb4e077f40ba8c3254c">
+                            {% if ul.profile_image %}
+                                <img class="profile_img" src="{{ ul.profile_image.url }}"/>
+                            {% else %}
+                                    <span class="material-symbols-outlined" style="font-size:60px; object-fit: cover;">
+                                        account_circle
+                                        </span>
+                            {% endif %}
                         </div>
                         <div class="name_content">
                             <span class="feed_name_txt">
-                                valtan
+                                {{ ul.nickname }} 
                             </span>
                             <span class="name_content_txt">
-                                instargram 신규가입</span>
+                                {{ ul.nickname }} 외  {{ ul.follow.count }}명이 팔로우 합니다. </span>
                         </div>
-                        <a class="link_txt">
-                            팔로우
+                        {% if ul in user.follow.all %}
+                        <a href="/user/follow/{{ ul.id }}" class="card-link">[팔로우 취소]</a>
+                        {% else %}
+                        <a href="/user/follow/{{ ul.id }}" class="card-link">[팔로우]</a>
+                        {% endif %}
                         </a>
                     </div>
-                    <div class="feed_name" style="justify-content: space-between">
-                        <div class="profile_box">
-                            <img
-                                class="profile_img"
-                                src="https://w.namu.la/s/970980add45c49dffbf98beb37f9f0adb802696a25433940345bd5f3fef26e60c7f82a732a5c7c3df80500e43fedecfa39e753aa0c0f19e45431aca7041daeb742235be31521790536a3d05fe5472d61f628f47925620f52ca7a21ce2acef2313b377c5182296b4c9f143016f12ffade">
-                        </div>
-                        <div class="name_content">
-                            <span class="feed_name_txt">
-                                Biackiss
-                            </span>
-                            <span class="name_content_txt">
-                                Abrelshud 외 5명이 팔로우</span>
-                        </div>
-                        <a class="link_txt">
-                            팔로우
-                        </a>
-                    </div>
-                    <div class="feed_name" style="justify-content: space-between">
-                        <div class="profile_box">
-                            <img
-                                class="profile_img"
-                                src="https://w.namu.la/s/60c23961fa6039139645cddf977dd58b595f290ccee1de2e564b55b1f0428145515d345311c92bd757c1f6f7701cdb68f599ad10255df9e87a4fdcea7e22e6b6ec7135cc15b75084cd9b9193d10bdc5baf74a7cc9e6536698770314110b2ef1810891ea9ef5b294f0bf162a63cab590d">
-                        </div>
-                        <div class="name_content">
-                            <span class="feed_name_txt">
-                                Kouku-Saton
-                            </span>
-                            <span class="name_content_txt">
-                                Biackiss 외 5명이 팔로우</span>
-                        </div>
-                        <a class="link_txt">
-                            팔로우
-                        </a>
-                    </div>
-                    <div class="feed_name" style="justify-content: space-between">
-                        <div class="profile_box">
-                            <img
-                                class="profile_img"
-                                src="https://i.ytimg.com/vi/9Us2YRlKQso/maxresdefault.jpg">
-                        </div>
-                        <div class="name_content">
-                            <span class="feed_name_txt">
-                                Abrelshud</span>
-                            <span class="name_content_txt">
-                                valtan 외 5명이 팔로우
-                            </span>
-                        </div>
-                        <a class="link_txt">
-                            팔로우
-                        </a>
-                    </div>
-                    <div class="feed_name" style="justify-content: space-between">
-                        <div class="profile_box">
-                            <img
-                                class="profile_img"
-                                src="https://blog.kakaocdn.net/dn/5V56h/btrG8WWIBmR/qjSQdjGaFz7PpJ1ijFK5nk/img.png">
-                        </div>
-                        <div class="name_content">
-                            <span class="feed_name_txt">
-                                Illiakan
-                            </span>
-                            <span class="name_content_txt">
-                                Kouku-Saton 외 5명이 팔로우
-                            </span>
-                        </div>
-                        <a class="link_txt">
-                            팔로우
-                        </a>
-                    </div>
+                    
+                    
+                    
+                    {% endfor %} 
+            {% endblock content2 %} 
                 </div>
+
                 <div class="comment_box">
                     <span>
                         ABBBA instagram
