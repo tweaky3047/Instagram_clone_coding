@@ -194,23 +194,23 @@
                     </div>
                 </div>
 
+               
                 <div
-                    style="margin-top: 10px; justify-content: space-between; display:flex;flex-direction: row; width:65%; height:40px;">
-                    <div style="display:flex;align-items:center;width:120px; height:40px;">
-                        게시물<span>
-                            <b>&nbsp100</b>
-                        </span>
-                    </div>
+                    style="margin-top: 10px; justify-content: center; display:flex;flex-direction: row; width:65%; height:40px;">
+                    
+                    
+                    
                     <div style="display:flex;align-items:center;width:120px; height:40px;">
                         팔로워<span>
-                            <b>&nbsp100</b>
+                            <b>&nbsp{{ user.followee.count }} </b>
                         </span>
                     </div>
                     <div style="display:flex;align-items:center;width:120px; height:40px;">
                         팔로우<span>
-                            <b>&nbsp100</b>
+                            <b>&nbsp{{ user.follow.count }}</b>
                         </span>
                     </div>
+                    
                 </div>
 
                 <div style="margin-top: 10px;display:flex;align-items:center;font-size: 15px;width:100%; height:80px;">

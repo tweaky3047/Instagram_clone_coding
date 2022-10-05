@@ -46,10 +46,13 @@ def profile_view(request):
     user = request.user.is_authenticated
     if request.method == 'GET':  
         feeds = Feed.objects.all().order_by('-created_at')
-        return render(request, 'user/profile.html',{'feeds':feeds})
+        follow_count = UserModel.objects.all().exclude(username=request.user.username)
+        return render(request, 'user/profile.html',{'feeds':feeds, 'follow_count': follow_count})
     else:
         return redirect('/sign_in')
     
+    
+ 
     # def post_view(request):
     # user = request.user.is_authenticated  
     # if request.method == 'GET':
@@ -126,3 +129,4 @@ def user_follow(request, id):
     else:
         click_user.followee.add(request.user)
     return redirect('/user')
+
