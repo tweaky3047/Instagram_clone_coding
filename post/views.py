@@ -59,7 +59,7 @@ class UploadFeed(APIView):
         image = uuid_name
         content = request.data.get('content')
         user_id = request.user.username
-        profile_image = request.data.get('profile_image')
+        profile_image = request.user.profile_image
 
         Feed.objects.create(image=image, content=content,
                             user_id=user_id, profile_image=profile_image)
@@ -102,9 +102,10 @@ def post_detaild(request):
         return redirect('/user')
 
 
-def home_view(request):
-        all_feed = PostModel.objects.all().order_by('-created_at')
-        comments = CommentModel.objects.all().order_by('-created_at')
-        print('dfsdf')
-        images = Feed.objects.all()
-        return render(request, 'home.html',{'comments':comments, 'posts' : all_feed, 'images':images})
+def home_view(request) :
+    all_feed = PostModel.objects.all().order_by('-created_at')
+    comments = CommentModel.objects.all().order_by('-created_at')
+    print('dfsdf')
+    images = Feed.objects.all()
+    return render(request, 'home.html',{'comments':comments, 'posts' : all_feed, 'images':images})
+
