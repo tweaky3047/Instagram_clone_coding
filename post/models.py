@@ -25,13 +25,7 @@ class Feed(models.Model):
     created_at = models.DateTimeField(auto_now_add=True,)
     updated_at = models.DateTimeField(auto_now=True, ) 
     
-class Image(models.Model):
-    class Meta:
-        db_table="images"
-        
-    image_url = models.URLField(max_length=2000)
-    post_image = models.ImageField()
-    PostModel   = models.ForeignKey('post.PostModel', on_delete=models.CASCADE)        
+
        
 class CommentModel(models.Model) :
     class Meta :
