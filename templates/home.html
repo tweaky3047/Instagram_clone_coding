@@ -378,7 +378,7 @@
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4QxwyZqH07Rqw&usqp=CAU"/>
                         </div>
                         <div style="margin: 0 10px; font-size: 14px;">
-                            <b>kmg0485</b>
+                            <b>{{user.username}}</b>
                         </div>
                     </div>
 
@@ -412,20 +412,16 @@
                             style="width: 30px; height: 30px; border-radius: 70%"
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4QxwyZqH07Rqw&usqp=CAU"/>
 
-                        <div style="text-align: left; font-size: 14px; margin-left: 5px">김민규
-                            <b>외 20명</b>이 좋아합니다.</div>
-                    </div>
-                    <div style="text-align: left; font-size: 15px; margin-left: 5px">
-                        <b>아이디 자리</b>
-                        드디어 엘가시아로의 여행!</div>
-                    <div
-                        style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
-                    <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                        <b>아이디 자리</b>
-                        우리도 가고싶어...</div>
-                    <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                        <b>아이디 자리</b>
-                        나는 아직도 루테란인데...</div>
+                            {% for post in posts %}<div style="text-align: left; font-size: 14px; margin-left: 5px">김민규
+                                <b>{{post.like_count}}명</b>이 좋아합니다.</div>
+                        </div><div style="text-align: left; font-size: 15px; margin-left: 5px">
+                            
+                            {{post.text}}</div>{% endfor %}
+                        <div
+                            style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
+                            {% for comment in comments %}<div style="text-align: left; font-size: 14px; margin-left: 5px">
+                            <b>{{comment.author}}</b>
+                            {{comment.comment}}</div>{% endfor %}
                     <div
                         style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray">실시간 시간</div>
                     <div>
@@ -442,86 +438,6 @@
 
                 </div>
 
-                {% block content %}
-                    <!--feed 2-->
-                    <form
-                        action="{% url 'home'%}"
-                        method="POST"
-                        style="border: solid 1px #dbdbdb; background-color: white; margin-top: 20px; border-radius: 10px;">
-                        {% csrf_token %}
-                        <div
-                            style="display: flex; flex-direction: row; align-items: center; margin: 0 10px">
-                            <div class="box" style="width: 50px; height: 50px; background: #bdbdbd">
-                                <img class="profile" src="{{ post.image_url }}"/>
-                            </div>
-                            <div style="margin: 0 10px ;font-size: 14px;">
-                                <b>{{ post.author }}</b>
-                            </div>
-                        </div>
-
-                        <div>
-
-                            <img style="width: 100%" src="{{ post.post_image }}"/>
-
-                        </div>
-                        <div
-                            style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
-                            <div>
-                                <span class="material-symbols-rounded" style="margin: 0 5px 0 0px">
-                                    favorite
-                                </span>
-                                <span class="material-symbols-rounded" style="margin: 0 5px">
-                                    mode_comment
-                                </span>
-                                <span class="material-symbols-rounded" style="margin: 0 5px">
-                                    send
-                                </span>
-                            </div>
-                            <div>
-                                <span class="material-symbols-rounded">
-                                    bookmark
-                                </span>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center">
-                            <img
-                                class="profile"
-                                style="width: 30px; height: 30px; border-radius: 70%"
-                                src="{{ post.post_image }}"/>
-
-                            <div style="text-align: left; font-size: 14px; margin-left: 5px">{{ post.PostModel.author }}
-                                <b>외
-                                    {{ post.like_count }}명</b>이 좋아합니다.</div>
-                        </div>
-                        <div style="text-align: left; font-size: 15px; margin-left: 5px">
-                            <b>{{ post.author }}</b>
-                            {{ post.text }}
-                        </div>
-                        <div
-                            style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
-                        <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                            <b>{{ post.CommentModel.author }}</b>
-                            {{ post.comment}}</div>
-                        <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                            <b>{{ post.CommentModel.author }}</b>
-                            {{ post.CommentModel.author }}</div>
-                        <div
-                            style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray">{{ post.created_at }}</div>
-
-                        <div>
-                            <div
-                                style="display: flex; align-items: center;border-top:  solid 0.5px #efefef;; margin-left: 10px;">
-                                <span class="material-symbols-rounded">sentiment_satisfied</span>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    style="box-shadow: none; border:none; outline: none;"
-                                    placeholder="댓글 달기.."/>
-                            </div>
-                        </div>
-
-                    </form>
-                {% endblock %}
             </div>
 
             <!--right box-->

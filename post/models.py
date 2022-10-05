@@ -9,7 +9,7 @@ class PostModel(models.Model):
     class Meta:
         db_table = "post"
 
-    author     = models.ForeignKey('user.UserModel', on_delete=models.CASCADE)
+    author     = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     text       = models.CharField(max_length=255, blank=True)
     # charfield의 제한이 255까지라 수정해 두었습니다.
     like_count = models.IntegerField()
