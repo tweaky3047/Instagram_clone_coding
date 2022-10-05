@@ -279,10 +279,17 @@
                         <div class="profile-of-article">
                             <img
                                 class="img-profile pic"
-                                src="{% get_media_prefix %}{{user.profile_image}}"
+                                src="{% get_media_prefix %}{{userd.profile_image}}"
                                 alt="">
-                            <span class="userID main-id point-span">{{user.nickname}}</span>
+                            <span class="userID main-id point-span">{{userd.nickname}}</span>
                         </div>
+                        {% if feed.user_id == user.username%}
+                                    <div style="text-align: right">
+                                        <a href="/post/post/delete/{{ feed.id }}">
+                                            <span class="badge rounded-pill bg-danger">삭제</span>
+                                        </a>
+                                    </div>
+                        {% endif %}
                         <img
                             class="icon-react icon-more"
                             src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
@@ -290,7 +297,7 @@
                     </header>
                     <div class="hl"></div>
                     <!-- description data -->
-                    <div class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{user.profile_image}}" <span class="userID main-id point-span">{{user.nickname}}</span>
+                    <div class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{userd.profile_image}}" <span class="userID main-id point-span">{{userd.nickname}}</span>
                     <div class="user_description">{{feed.content}}</div>
                     <div class="time-log">
                         <span>{{feed.created_at}}</span>
