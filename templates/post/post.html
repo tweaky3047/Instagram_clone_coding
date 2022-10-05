@@ -260,44 +260,7 @@
                 width: 80vw;
             }
         </style>
-        <script>
-            // jquery 댓글 입력 구현
-            const commentInput = document.getElementById('input-comment');
-            const commentBtn = document.getElementsByClassName('submit-comment')[0];
-            const commentList = document.getElementsByClassName('comments')[0];
-
-            commentInput.addEventListener('keypress', function (e) {
-                if (commentInput.value) {
-                    if (e.which === 13) {
-                        var newComment = document.createElement('li')
-                        newComment.innerHTML = `<span><span class="point-span userID">thisisyourhyung</span>` +
-                                this.value +
-                                `</span><img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">`;
-                        commentList.appendChild(newComment);
-                        this.value = "";
-                    }
-                }
-            })
-
-            commentBtn.addEventListener('click', function () {
-                if (commentInput.value) {
-                    var newComment = document.createElement('li')
-                    newComment.innerHTML = `<span><span class="point-span userID">thisisyourhyung</span>` +
-                            commentInput.value +
-                            `</span><img class="comment-heart" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">`;
-                    commentList.appendChild(newComment);
-                    commentInput.value = "";
-                }
-            })
-
-            commentInput.addEventListener('keyup', function (event) {
-                if (commentInput.value) {
-                    commentBtn.disabled = false;
-                } else {
-                    commentBtn.disabled = true;
-                }
-            })
-        </script>
+        
     </head>
 
     <body>
@@ -306,13 +269,12 @@
             style="display:flex; text_align : center; justify-content: center;">
             <!-- post pic -->
             <article class="wrap">
-                <div
-                    style="position:static; width:60%; height: 100%; ; background-color:black">
+                <div style="position:static; width:60%; height: 100%; ; background-color:black">
                     <img
                         style=" display:flex; width:900px; margin:160px 5px auto 7px; "
                         src="{% get_media_prefix %}{{feed.image}}"/>
                 </div>
-                <form class="post-description">
+                <div class="post-description">
                     <header>
                         <div class="profile-of-article">
                             <img
@@ -331,10 +293,11 @@
                     <div class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{user.profile_image}}" <span class="userID main-id point-span">{{user.nickname}}</span>
                     <div class="user_description">{{feed.content}}</div>
                     <div class="time-log">
-                        <span>{{feed.created_at}}
-                        </span>
+                        <span>{{feed.created_at}}</span>
                     </div>
-                    {% for comment in comments %}
+
+                    <!--댓글 보여주기-->
+                    {% for cm in comments %}
                         <div class="comment-section" ~="~">
                             <ul
                                 class="comments"
@@ -344,16 +307,17 @@
                                         class="img-profile pic"
                                         src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg"
                                         alt="">
-                                        <span class="userID main-id point-span">{{comment.author}}</span>{{comment.comment}}</span>
+                                        <span class="userID main-id point-span">{{cm.author}}</span>{{cm.comment}}</span>
                                 </li>
                                 <div class="time-log">
-                                    <span>{{comment.created_at}}</span>
-                                    <span style="margin-left:3px;">답글 달기</span>
+                                    <span>{{cm.created_at}}</span>
+
                                 </div>
                             </ul>
                         </div>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+
                 <div class="hl"></div>
                 <div
                     style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px"></div>
@@ -362,16 +326,21 @@
                     <div class="time-log"></div>
 
                 </div>
-                <div class="comment">
+               
+                <!--댓글 작성-->
+                <form action="/post/post/comment/{{ feed.id }}" method="POST">
+                {% csrf_token %}
                     <input
-                        id="input-comment"
+                        name="input-comments"
+                        id="input-comments"
                         class="input-comment"
                         type="text"
-                        placeholder="댓글 달기...">
-                    <button type="submit" class="submit-comment" disabled="disabled">게시</button>
-                </div>
-            </form>
-        </article>
-        </body>
+                        placeholder="댓글을 작성해주세요"></input>
+                    <button type="submit" class="submit-comment">게시</button>
+                </form>
 
-    </html>
+            
+        </article>
+    </body>
+
+</html>
