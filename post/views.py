@@ -36,8 +36,10 @@ def detail_tweet(request, id):
 
 
 
-def delete_post(request):
-    pass
+def delete_post(request, id):
+    my_tweet = Feed.objects.get(id=id)
+    my_tweet.delete()
+    return redirect('/profile/')
 
 
 def write_comment(request, id):
@@ -46,7 +48,6 @@ def write_comment(request, id):
 
 def delete_comment(request):
     pass
-
 
 class UploadFeed(APIView):
     def post(self, request):
@@ -99,9 +100,15 @@ def delete_comment(request, id):
 
 def post_detail(request, id):
     feed = Feed.objects.get(id=id)
-    user = UserModel.objects.get(username=feed.user_id)
+
+    userd = UserModel.objects.get(username=feed.user_id)
     comments = CommentModel.objects.filter(post_id=id).order_by('-created_at')
-    return render(request,'post/post.html',{'feed':feed,'comments':comments,'user':user})
+    return render(request,'post/post.html',{'feed':feed,'comments':comments,'userd':userd})
+
+  
+   
+    
+
 
 
 
