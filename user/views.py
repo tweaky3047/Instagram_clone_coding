@@ -45,11 +45,19 @@ def post_view(request):
 
 def profile_view(request): 
     user = request.user.is_authenticated
-    if user:  
-        all_feed = Feed.objects.all().order_by('-created_at')   
-        return render(request, 'user/profile.html',{'feeds':all_feed})
+    if request.method == 'GET':  
+        feeds = Feed.objects.all().order_by('-created_at')
+        return render(request, 'user/profile.html',{'feeds':feeds})
     else:
         return redirect('/sign_in')
+    
+    # def post_view(request):
+    # user = request.user.is_authenticated  
+    # if request.method == 'GET':
+       
+    #     user_recommand_list = UserModel.objects.all().exclude(username=request.user.username)
+    #     feeds = Feed.objects.all().order_by('-created_at')
+    #     return render(request, 'home.html', {'user_recommand_list': user_recommand_list, 'feeds':feeds})
 
 def sign_up(request) :
     if request.method == 'GET':
