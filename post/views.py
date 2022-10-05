@@ -73,7 +73,6 @@ class UploadFeed(APIView):
 
 @login_required
 def upload_comment(request, id):
-    print("연결되었습니다.")
     if request.method == 'POST':
         comment = request.POST.get("input-comments","")
         current_post = Feed.objects.get(id=id)
@@ -84,6 +83,8 @@ def upload_comment(request, id):
         ct.post = current_post
         ct.save()
         print("연결되었습니다.")
+        print(comment)
+        print(ct.post)
         return redirect('/post/post/'+str(id))
 
 
@@ -99,7 +100,7 @@ def delete_comment(request, id):
 def post_detail(request, id):
     feed = Feed.objects.get(id=id)
     user = UserModel.objects.get(username=feed.user_id)
-    comments = CommentModel.objects.filter(author=id).order_by('-created_at')
+    comments = CommentModel.objects.filter(id=id).order_by('-created_at')
     return render(request,'post/post.html',{'feed':feed,'comments':comments,'user':user})
 
 
