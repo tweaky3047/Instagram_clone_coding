@@ -674,7 +674,7 @@
                     </div>
                     <div style="width: 40px;"></div>
                 </div>
-                <div id='open_browser' class="img_upload_space" style=" margin-inline: auto;">
+                <div class="img_upload_space" style=" margin-inline: auto;">
                     <p class="picture_zone">사진등록</p>
                 </div>
             </div>
@@ -728,17 +728,9 @@
             </div>
         </div>
     </div>
-    <script>yourHTMLLoader.window.openFolder = openFolder;</script>
+   
     <script>
-        let files;
-        
-
-        $('#open_browser').click(function openFolder(path : String): void {
-            var file: File = File.documentsDirectory;
-            var fileOpen: File = file.resolvePath(path);
-            fileOpen.addEventListener(Event.SELECT, fileSelected); //if you want manage open file
-            fileOpen.browse();
-        })
+   
 
         $('#nav_bar_add_box').click(function () {
             $('#first_modal').css({display: 'flex'});

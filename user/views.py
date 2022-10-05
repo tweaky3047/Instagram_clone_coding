@@ -4,13 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import auth
 
-# Create your views here.
+
+
 def home_view(request):
     user = request.user.is_authenticated  
     if user:
         return redirect('/home')
     else:
         return redirect('/sign_in')
+
 
 
 def profile_view(request):    
