@@ -251,6 +251,10 @@
             background-clip: content-box, border-box;
 
         }
+
+        a {
+            text-decoration-line: none;
+        }
     </style>
 
     <body>
@@ -393,7 +397,7 @@
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4QxwyZqH07Rqw&usqp=CAU"/>
                         </div>
                         <div style="margin: 0 10px; font-size: 14px;">
-                            <b>{{user.username}}</b>
+                            <b>{{user.nickname}}</b>
                         </div>
                     </div>
 
@@ -431,15 +435,19 @@
                     <div style="text-align: left; font-size: 14px; margin-left: 5px">김민규
                             <b>{{post.like_count}}명</b>이 좋아합니다.</div>
                     </div><div style="text-align: left; font-size: 15px; margin-left: 5px">
-                        
-                        {{post.text}}</div>
-                    <div id="comment_plus"
-                        style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray; cursor : pointer">댓글 모두 보기</div>
+         
+                        {{feed.content}}</div>
+                    <a class="link" href="post/">   
+                    <div 
+                        style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray; cursor : pointer">댓글 모두 보기</div></a>
+
+                       
+
                         <div style="text-align: left; font-size: 14px; margin-left: 5px">
                         <b>{{comment.author}}</b>
                         {{comment.comment}}</div>
                     <div
-                        style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray">실시간 시간</div>
+                        style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray">{{feed.created_at}}</div>
                     <div>
                         <div
                             style="display: flex; align-items: center; border-top: solid 0.5px #efefef; margin-left: 10px;">
@@ -451,7 +459,6 @@
                                 placeholder="댓글 달기.."/>
                         </div>
                     </div>
-
                 </div>
                 {% endfor %}
             </div>
