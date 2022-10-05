@@ -1,11 +1,18 @@
-import re
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import UserModel
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-# Create your views here.
+from django.contrib import auth
 
-def home_view(request):    
-    return render(request, 'home.html')
+
+
+def home_view(request):
+    user = request.user.is_authenticated  
+    if user:
+        return redirect('/home')
+    else:
+        return redirect('/sign_in')
+
 
 
 def profile_view(request):    
@@ -38,6 +45,38 @@ def sign_up(request) :
                 return redirect('/sign_in')
 
 
-def sign_in(request) :
-    return render(request, 'user/sign_in.html')
+def sign_in_view(request):
+    if request.method == 'POST':
+        
+        username = request.POST.get('phone_number_or_email','')
+        password = request.POST.get('password','')
+     
+        me = UserModel.objects.get(username=username) # 사용자 불러오기
+        if me.password == password:         
+            request.session['user'] = me.username            
+            return render(request,'home.html')
+        else: 
+            return render(request,'user/sign_in.html',{'error':'이메일 혹은 패스워드를 확인 해 주세요'}) 
+    elif request.method == 'GET':
+        user = request.user.is_authenticated
+        if user:
+            return redirect('/home')
+        else:
+            return render(request,'user/sign_in.html')
 
+@login_required
+def user_view(request):
+    if request.method == 'GET':
+        # 사용자를 불러오기, exclude와 request.user.username 를 사용해서 '로그인 한 사용자'를 제외하기
+        user_list = UserModel.objects.all().exclude(username=request.user.username)
+        return render(request, 'user/user_list.html', {'user_list': user_list})
+    
+@login_required
+def user_follow(request, id):
+    me = request.user
+    click_user = UserModel.objects.get(id=id)
+    if me in click_user.followee.all():
+        click_user.followee.remove(request.user)
+    else:
+        click_user.followee.add(request.user)
+    return redirect('/user')
