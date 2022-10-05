@@ -100,7 +100,7 @@ def delete_comment(request, id):
 def post_detail(request, id):
     feed = Feed.objects.get(id=id)
     user = UserModel.objects.get(username=feed.user_id)
-    comments = CommentModel.objects.filter(id=id).order_by('-created_at')
+    comments = CommentModel.objects.filter(post_id=id).order_by('-created_at')
     return render(request,'post/post.html',{'feed':feed,'comments':comments,'user':user})
 
 
