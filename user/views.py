@@ -42,7 +42,6 @@ def post_view(request):
 
         return render(request, "/profile.html", context = dict(feeds=feed_list, user=user))'''
 
-
 def profile_view(request): 
     user = request.user.is_authenticated
     if request.method == 'GET':  

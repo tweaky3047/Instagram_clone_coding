@@ -398,7 +398,7 @@
                     </div>
 
                     <div>
-                        <img
+                        <img 
                             style="width: 100%"
                             src="{% get_media_prefix %}{{ feed.image }}"/>
                     </div>
@@ -433,8 +433,8 @@
                     </div><div style="text-align: left; font-size: 15px; margin-left: 5px">
                         
                         {{post.text}}</div>
-                    <div
-                        style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
+                    <div id="comment_plus"
+                        style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray; cursor : pointer">댓글 모두 보기</div>
                         <div style="text-align: left; font-size: 14px; margin-left: 5px">
                         <b>{{comment.author}}</b>
                         {{comment.comment}}</div>
@@ -626,6 +626,9 @@
 </div>
 
 <script>
+    $('#comment_plus').click(function () {
+        window.location.href = '/post/<int:id>'
+    })
     $('#profile_button').click(function () {
         window.location.href = '/profile'
     })
