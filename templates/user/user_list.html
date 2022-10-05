@@ -172,7 +172,7 @@
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">{{ user.username }}</h5>
+                  <h5 class="card-title">{{ user.nickname }}</h5>
                   <p class="card-text">{{ user.bio }}</p>
                 </div>
               </div>
@@ -189,8 +189,8 @@
                 {% for ul in user_list %}
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">{{ ul.username }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ ul.email }}</h6>
+                    <h5 class="card-title">{{ ul.nickname }}</h5>
+                    
                     <p class="card-text">{{ ul.bio }}</p>
                     <p class="card-text">팔로잉 {{ ul.follow.count }} 명 / 팔로워 {{ ul.followee.count }} 명</p>
                     {% if ul in user.follow.all %}

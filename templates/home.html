@@ -273,11 +273,13 @@
                         style="font-size: 30px; margin-right:10px;">
                         home
                     </span>
-                    <a class="link" href="/user"><span
-                        class="material-symbols-rounded"
-                        style="font-size: 30px; margin-right:10px; color: black;">
-                        send
-                    </span></a>
+                    <a class="link" href="/user">
+                        <span
+                            class="material-symbols-rounded"
+                            style="font-size: 30px; margin-right:10px; color: black;">
+                            send
+                        </span>
+                    </a>
 
                     <span
                         id="nav_bar_add_box"
@@ -441,86 +443,84 @@
                 </div>
 
                 {% block content %}
-                <!--feed 2-->
-                <form action="{% url 'home'%}" method="POST"
-                    style="border: solid 1px #dbdbdb; background-color: white; margin-top: 20px; border-radius: 10px;">
-                    {% csrf_token %}
-                    <div
-                        style="display: flex; flex-direction: row; align-items: center; margin: 0 10px">
-                        <div class="box" style="width: 50px; height: 50px; background: #bdbdbd">
-                            <img class="profile" src="{{ post.image_url }}"/>
-                        </div>
-                        <div style="margin: 0 10px ;font-size: 14px;">
-                            <b>{{ post.author }}</b>
-                        </div>
-                    </div>
-
-                    <div>
-
-                        <img
-                            style="width: 100%"
-                            src="{{ post.post_image }}"/>
-
-                    </div>
-                    <div
-                        style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
-                        <div>
-                            <span class="material-symbols-rounded" style="margin: 0 5px 0 0px">
-                                favorite
-                            </span>
-                            <span class="material-symbols-rounded" style="margin: 0 5px">
-                                mode_comment
-                            </span>
-                            <span class="material-symbols-rounded" style="margin: 0 5px">
-                                send
-                            </span>
-                        </div>
-                        <div>
-                            <span class="material-symbols-rounded">
-                                bookmark
-                            </span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: center">
-                        <img
-                            class="profile"
-                            style="width: 30px; height: 30px; border-radius: 70%"
-                            src="{{ post.post_image }}"/>
-
-                        <div style="text-align: left; font-size: 14px; margin-left: 5px">{{ post.PostModel.author }}
-                            <b>외 {{ post.like_count }}명</b>이 좋아합니다.</div>
-                    </div>
-                    <div style="text-align: left; font-size: 15px; margin-left: 5px">
-                        <b>{{ post.author }}</b>
-                        {{ post.text }} </div>
-                    <div
-                        style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
-                    <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                        <b>{{ post.CommentModel.author }}</b>
-                        {{ post.comment}}</div>
-                    <div style="text-align: left; font-size: 14px; margin-left: 5px">
-                        <b>{{ post.CommentModel.author }}</b>
-                        {{ post.CommentModel.author }}</div>
-                    <div
-
-                       
-
-                        style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray"
-                        >{{ post.created_at }}</div>
-
-                    <div>
+                    <!--feed 2-->
+                    <form
+                        action="{% url 'home'%}"
+                        method="POST"
+                        style="border: solid 1px #dbdbdb; background-color: white; margin-top: 20px; border-radius: 10px;">
+                        {% csrf_token %}
                         <div
-                            style="display: flex; align-items: center;border-top:  solid 0.5px #efefef;; margin-left: 10px;">
-                            <span class="material-symbols-rounded">sentiment_satisfied</span>
-                            <input
-                                type="text"
-                                class="form-control"
-                                style="box-shadow: none; border:none; outline: none;"
-                                placeholder="댓글 달기.."/>
+                            style="display: flex; flex-direction: row; align-items: center; margin: 0 10px">
+                            <div class="box" style="width: 50px; height: 50px; background: #bdbdbd">
+                                <img class="profile" src="{{ post.image_url }}"/>
+                            </div>
+                            <div style="margin: 0 10px ;font-size: 14px;">
+                                <b>{{ post.author }}</b>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                        <div>
+
+                            <img style="width: 100%" src="{{ post.post_image }}"/>
+
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
+                            <div>
+                                <span class="material-symbols-rounded" style="margin: 0 5px 0 0px">
+                                    favorite
+                                </span>
+                                <span class="material-symbols-rounded" style="margin: 0 5px">
+                                    mode_comment
+                                </span>
+                                <span class="material-symbols-rounded" style="margin: 0 5px">
+                                    send
+                                </span>
+                            </div>
+                            <div>
+                                <span class="material-symbols-rounded">
+                                    bookmark
+                                </span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center">
+                            <img
+                                class="profile"
+                                style="width: 30px; height: 30px; border-radius: 70%"
+                                src="{{ post.post_image }}"/>
+
+                            <div style="text-align: left; font-size: 14px; margin-left: 5px">{{ post.PostModel.author }}
+                                <b>외
+                                    {{ post.like_count }}명</b>이 좋아합니다.</div>
+                        </div>
+                        <div style="text-align: left; font-size: 15px; margin-left: 5px">
+                            <b>{{ post.author }}</b>
+                            {{ post.text }}
+                        </div>
+                        <div
+                            style="text-align: left; font-size: 13px; margin: 5px 0 5px 5px; color: gray">댓글 20개 모두 보기</div>
+                        <div style="text-align: left; font-size: 14px; margin-left: 5px">
+                            <b>{{ post.CommentModel.author }}</b>
+                            {{ post.comment}}</div>
+                        <div style="text-align: left; font-size: 14px; margin-left: 5px">
+                            <b>{{ post.CommentModel.author }}</b>
+                            {{ post.CommentModel.author }}</div>
+                        <div
+                            style="text-align: left; font-size: 12px; margin: 10px 0 10px 5px; color: gray">{{ post.created_at }}</div>
+
+                        <div>
+                            <div
+                                style="display: flex; align-items: center;border-top:  solid 0.5px #efefef;; margin-left: 10px;">
+                                <span class="material-symbols-rounded">sentiment_satisfied</span>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    style="box-shadow: none; border:none; outline: none;"
+                                    placeholder="댓글 달기.."/>
+                            </div>
+                        </div>
+
+                    </form>
                 {% endblock %}
             </div>
 
@@ -529,6 +529,7 @@
                 <div class="right_body">
                     <div class="feed_name" style="justify-content: space-between">
                         <div style="display: flex; align-items: center;">
+                            {% if user.is_authenticated %}
                             <div class="big_profile_box">
                                 <img
                                     class="profile_img"
@@ -536,316 +537,321 @@
                             </div>
                             <div class="name_content">
                                 <span class="feed_name_txt">
-                                    kmg0485
+                                    {{ user.last_name }}
                                 </span>
                                 <span class="name_content_txt">
-                                    MinKyu Kim
+                                    {{ user.nickname }}
                                 </span>
                             </div>
                         </div>
+                       
+                                    </span>
+                                </li>
+                                <a class="link_txt" href="/logout" style="font-size=11px">
+                                    로그아웃
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
 
+                </div>
+
+                <div class="recommend_box">
+                    <span style="color: gray">
+                        회원님을 위한 추천</span>
+                    <span style="font-size: 12px">
+                        모두 보기
+                    </span>
+                </div>
+                <div>
+                    <div class="feed_name" style="justify-content: space-between">
+                        <div class="profile_box">
+                            <img
+                                class="profile_img"
+                                src="https://w.namu.la/s/a089805b90f65666586156545e3a1a7b9902f21ba4633ee03f23e370edb4b77941cf82125e9acd2ba3872851f93896a89062ee40705a758cd7c2bdd523ad37bb198eae165cbc4c85fef72d788d1002c6b2e252db30372f057a710d62f6f40caed947cb5634c81cb4e077f40ba8c3254c">
+                        </div>
+                        <div class="name_content">
+                            <span class="feed_name_txt">
+                                valtan
+                            </span>
+                            <span class="name_content_txt">
+                                instargram 신규가입</span>
+                        </div>
                         <a class="link_txt">
-                            전환
+                            팔로우
                         </a>
                     </div>
-
-                    <div class="recommend_box">
-                        <span style="color: gray">
-                            회원님을 위한 추천</span>
-                        <span style="font-size: 12px">
-                            모두 보기
-                        </span>
-                    </div>
-                    <div>
-                        <div class="feed_name" style="justify-content: space-between">
-                            <div class="profile_box">
-                                <img
-                                    class="profile_img"
-                                    src="https://w.namu.la/s/a089805b90f65666586156545e3a1a7b9902f21ba4633ee03f23e370edb4b77941cf82125e9acd2ba3872851f93896a89062ee40705a758cd7c2bdd523ad37bb198eae165cbc4c85fef72d788d1002c6b2e252db30372f057a710d62f6f40caed947cb5634c81cb4e077f40ba8c3254c">
-                            </div>
-                            <div class="name_content">
-                                <span class="feed_name_txt">
-                                    valtan
-                                </span>
-                                <span class="name_content_txt">
-                                    instargram 신규가입</span>
-                            </div>
-                            <a class="link_txt">
-                                팔로우
-                            </a>
+                    <div class="feed_name" style="justify-content: space-between">
+                        <div class="profile_box">
+                            <img
+                                class="profile_img"
+                                src="https://w.namu.la/s/970980add45c49dffbf98beb37f9f0adb802696a25433940345bd5f3fef26e60c7f82a732a5c7c3df80500e43fedecfa39e753aa0c0f19e45431aca7041daeb742235be31521790536a3d05fe5472d61f628f47925620f52ca7a21ce2acef2313b377c5182296b4c9f143016f12ffade">
                         </div>
-                        <div class="feed_name" style="justify-content: space-between">
-                            <div class="profile_box">
-                                <img
-                                    class="profile_img"
-                                    src="https://w.namu.la/s/970980add45c49dffbf98beb37f9f0adb802696a25433940345bd5f3fef26e60c7f82a732a5c7c3df80500e43fedecfa39e753aa0c0f19e45431aca7041daeb742235be31521790536a3d05fe5472d61f628f47925620f52ca7a21ce2acef2313b377c5182296b4c9f143016f12ffade">
-                            </div>
-                            <div class="name_content">
-                                <span class="feed_name_txt">
-                                    Biackiss
-                                </span>
-                                <span class="name_content_txt">
-                                    Abrelshud 외 5명이 팔로우</span>
-                            </div>
-                            <a class="link_txt">
-                                팔로우
-                            </a>
-                        </div>
-                        <div class="feed_name" style="justify-content: space-between">
-                            <div class="profile_box">
-                                <img
-                                    class="profile_img"
-                                    src="https://w.namu.la/s/60c23961fa6039139645cddf977dd58b595f290ccee1de2e564b55b1f0428145515d345311c92bd757c1f6f7701cdb68f599ad10255df9e87a4fdcea7e22e6b6ec7135cc15b75084cd9b9193d10bdc5baf74a7cc9e6536698770314110b2ef1810891ea9ef5b294f0bf162a63cab590d">
-                            </div>
-                            <div class="name_content">
-                                <span class="feed_name_txt">
-                                    Kouku-Saton
-                                </span>
-                                <span class="name_content_txt">
-                                    Biackiss 외 5명이 팔로우</span>
-                            </div>
-                            <a class="link_txt">
-                                팔로우
-                            </a>
-                        </div>
-                        <div class="feed_name" style="justify-content: space-between">
-                            <div class="profile_box">
-                                <img
-                                    class="profile_img"
-                                    src="https://i.ytimg.com/vi/9Us2YRlKQso/maxresdefault.jpg">
-                            </div>
-                            <div class="name_content">
-                                <span class="feed_name_txt">
-                                    Abrelshud</span>
-                                <span class="name_content_txt">
-                                    valtan 외 5명이 팔로우
-                                </span>
-                            </div>
-                            <a class="link_txt">
-                                팔로우
-                            </a>
-                        </div>
-                        <div class="feed_name" style="justify-content: space-between">
-                            <div class="profile_box">
-                                <img
-                                    class="profile_img"
-                                    src="https://blog.kakaocdn.net/dn/5V56h/btrG8WWIBmR/qjSQdjGaFz7PpJ1ijFK5nk/img.png">
-                            </div>
-                            <div class="name_content">
-                                <span class="feed_name_txt">
-                                    Illiakan
-                                </span>
-                                <span class="name_content_txt">
-                                    Kouku-Saton 외 5명이 팔로우
-                                </span>
-                            </div>
-                            <a class="link_txt">
-                                팔로우
-                            </a>
-                        </div>
-                    </div>
-                    <div class="comment_box">
-                        <span>
-                            ABBBA instagram
-                        </span>
-                        <span>
-                            https://github.com/tweaky3047/Instagram_clone_coding.git
-                        </span>
-                        <br>
-                        <span>
-                            @2022 ABBBA
-                        </span>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 첫번째 모달-->
-        <div id="first_modal" class="modal_overlay">
-            <div class="modal_window">
-                <div class="nv_bar">
-                    <div>
-                        <span onclick="close" class="material-symbols-outlined">
-                            close
-                        </span>
-                    </div>
-                    <div id="blank_space" style="font-weight: bolder; opacity:0.8;">
-                        새 게시물 만들기
-                    </div>
-                    <div style="width: 40px;"></div>
-                </div>
-                <div class="img_upload_space" style=" margin-inline: auto;">
-                    <p class="picture_zone">사진등록</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 두번째 모달-->
-        <div id="second_modal" class="modal_overlay">
-            <div class="modal_window">
-                <div class="nv_bar" style="border-bottom: solid 2px gray; ">
-                    <div style="width: 40px"></div>
-                    <div style="font-weight: bolder; opacity:0.8;">
-                        새 게시물 만들기
-                    </div>
-                    <div>
-                        <span onclick="close" class="material-symbols-outlined">
-                            close
-                        </span>
-                    </div>
-                </div>
-
-                <div style="display: flex; flex-direction: row">
-                    <div
-                        class="img_upload_space"
-                        style=" height: 785px;width: 500px; margin-left: 1px; padding-right: 5px; border-right: solid 2px gray; "></div>
-                    <div style="display: flex; flex-direction: column; padding-left:0;  width: 40%">
-                        <div
-                            style="height: 7%; border-bottom: solid 2px gray; border-right: solid 2px gray; ">
-                            <span class="material-symbols-outlined">
-                                account_circle
+                        <div class="name_content">
+                            <span class="feed_name_txt">
+                                Biackiss
                             </span>
-                            minsung_yun
+                            <span class="name_content_txt">
+                                Abrelshud 외 5명이 팔로우</span>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">
-                                내용을 입력해주세요</label>
-                            <textarea
-                                id="exampleFormControlTextarea1"
-                                style="height: 570px; border:none; resize: none;"
-                                class="form-control"
-                                rows="3"></textarea>
-                        </div>
-
-                        <button
-                            id="feed_create_button"
-                            style="margin-top: 80px; margin-left: 5px;"
-                            class="btn btn-primary"
-                            type="submit">공유하기</button>
+                        <a class="link_txt">
+                            팔로우
+                        </a>
                     </div>
+                    <div class="feed_name" style="justify-content: space-between">
+                        <div class="profile_box">
+                            <img
+                                class="profile_img"
+                                src="https://w.namu.la/s/60c23961fa6039139645cddf977dd58b595f290ccee1de2e564b55b1f0428145515d345311c92bd757c1f6f7701cdb68f599ad10255df9e87a4fdcea7e22e6b6ec7135cc15b75084cd9b9193d10bdc5baf74a7cc9e6536698770314110b2ef1810891ea9ef5b294f0bf162a63cab590d">
+                        </div>
+                        <div class="name_content">
+                            <span class="feed_name_txt">
+                                Kouku-Saton
+                            </span>
+                            <span class="name_content_txt">
+                                Biackiss 외 5명이 팔로우</span>
+                        </div>
+                        <a class="link_txt">
+                            팔로우
+                        </a>
+                    </div>
+                    <div class="feed_name" style="justify-content: space-between">
+                        <div class="profile_box">
+                            <img
+                                class="profile_img"
+                                src="https://i.ytimg.com/vi/9Us2YRlKQso/maxresdefault.jpg">
+                        </div>
+                        <div class="name_content">
+                            <span class="feed_name_txt">
+                                Abrelshud</span>
+                            <span class="name_content_txt">
+                                valtan 외 5명이 팔로우
+                            </span>
+                        </div>
+                        <a class="link_txt">
+                            팔로우
+                        </a>
+                    </div>
+                    <div class="feed_name" style="justify-content: space-between">
+                        <div class="profile_box">
+                            <img
+                                class="profile_img"
+                                src="https://blog.kakaocdn.net/dn/5V56h/btrG8WWIBmR/qjSQdjGaFz7PpJ1ijFK5nk/img.png">
+                        </div>
+                        <div class="name_content">
+                            <span class="feed_name_txt">
+                                Illiakan
+                            </span>
+                            <span class="name_content_txt">
+                                Kouku-Saton 외 5명이 팔로우
+                            </span>
+                        </div>
+                        <a class="link_txt">
+                            팔로우
+                        </a>
+                    </div>
+                </div>
+                <div class="comment_box">
+                    <span>
+                        ABBBA instagram
+                    </span>
+                    <span>
+                        https://github.com/tweaky3047/Instagram_clone_coding.git
+                    </span>
+                    <br>
+                    <span>
+                        @2022 ABBBA
+                    </span>
+
                 </div>
             </div>
         </div>
     </div>
-   
-    <script>
-   
+    <!-- 첫번째 모달-->
+    <div id="first_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div class="nv_bar">
+                <div>
+                    <span onclick="close" class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+                <div id="blank_space" style="font-weight: bolder; opacity:0.8;">
+                    새 게시물 만들기
+                </div>
+                <div style="width: 40px;"></div>
+            </div>
+            <div class="img_upload_space" style=" margin-inline: auto;">
+                <p class="picture_zone">사진등록</p>
+            </div>
+        </div>
+    </div>
 
-        $('#nav_bar_add_box').click(function () {
-            $('#first_modal').css({display: 'flex'});
-            $(document.body).css({overflow: 'hidden'});
-        });
+    <!-- 두번째 모달-->
+    <div id="second_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div class="nv_bar" style="border-bottom: solid 2px gray; ">
+                <div style="width: 40px"></div>
+                <div style="font-weight: bolder; opacity:0.8;">
+                    새 게시물 만들기
+                </div>
+                <div>
+                    <span onclick="close" class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+            </div>
 
-        $('.material-symbols-outlined').click(function () {
-            $('#first_modal').css({display: 'none'});
-            $('#second_modal').css({display: 'none'});
-        });
+            <div style="display: flex; flex-direction: row">
+                <div
+                    class="img_upload_space"
+                    style=" height: 785px;width: 500px; margin-left: 1px; padding-right: 5px; border-right: solid 2px gray; "></div>
+                <div style="display: flex; flex-direction: column; padding-left:0;  width: 40%">
+                    <div
+                        style="height: 7%; border-bottom: solid 2px gray; border-right: solid 2px gray; ">
+                        <span class="material-symbols-outlined">
+                            account_circle
+                        </span>
+                        minsung_yun
+                    </div>
 
-        $('.img_upload_space')
-            .on("dragover", dragOver)
-            .on("dragleave", dragOver)
-            .on("drop", uploadFiles);
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">
+                            내용을 입력해주세요</label>
+                        <textarea
+                            id="exampleFormControlTextarea1"
+                            style="height: 570px; border:none; resize: none;"
+                            class="form-control"
+                            rows="3"></textarea>
+                    </div>
 
-        function dragOver(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            if (e.type == "dragover") {
-                $(e.target).css({"background-color": "gray", "outline-offset": "-20px"});
-            } else {
-                $(e.target).css({"background-color": "white", "outline-offset": "-10px"});
-            }
+                    <button
+                        id="feed_create_button"
+                        style="margin-top: 80px; margin-left: 5px;"
+                        class="btn btn-primary"
+                        type="submit">공유하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('#nav_bar_add_box').click(function () {
+        $('#first_modal').css({display: 'flex'});
+        $(document.body).css({overflow: 'hidden'});
+    });
+
+    $('.material-symbols-outlined').click(function () {
+        $('#first_modal').css({display: 'none'});
+        $('#second_modal').css({display: 'none'});
+    });
+
+    $('.img_upload_space')
+        .on("dragover", dragOver)
+        .on("dragleave", dragOver)
+        .on("drop", uploadFiles);
+
+    function dragOver(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (e.type == "dragover") {
+            $(e.target).css({"background-color": "gray", "outline-offset": "-20px"});
+        } else {
+            $(e.target).css({"background-color": "white", "outline-offset": "-10px"});
         }
+    }
 
-        $('#feed_create_button').click(function () {
-            alert("피드가 공유되었습니다!")
+    $('#feed_create_button').click(function () {
+        alert("피드가 공유되었습니다!")
 
-            let file = files[0];
-            let image = files[0].name;
-            let content = $('#exampleFormControlTextarea1').val();
-            let user_id = "yy3047";
-            let profile_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4" +
-                    "QxwyZqH07Rqw&usqp=CAU";
+        let file = files[0];
+        let image = files[0].name;
+        let content = $('#exampleFormControlTextarea1').val();
+        let user_id = "yy3047";
+        let profile_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnyObLLHeQeBSpYHjl9lXRG4" +
+                "QxwyZqH07Rqw&usqp=CAU";
 
-            let fd = new FormData;
-            fd.append('file', file);
-            fd.append('image', image);
-            fd.append('content', content);
-            fd.append('user_id', user_id);
-            fd.append('profile_image', profile_image);
-            fd.append('csrfmiddlewaretoken', "{{ csrf_token }}");
+        let fd = new FormData;
+        fd.append('file', file);
+        fd.append('image', image);
+        fd.append('content', content);
+        fd.append('user_id', user_id);
+        fd.append('profile_image', profile_image);
+        fd.append('csrfmiddlewaretoken', "{{ csrf_token }}");
 
-            $.ajax({
-                url: "/post/upload/",
-                data: fd,
-                method: "POST",
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    console.log("성공");
-                },
-                error: function (Request, status, error) {
-                    console.log("에러")
-                },
-                complete: function () {
-                    console.log("완료");
-                }
-            })
-            $('#first_modal').css({display: 'none'});
-            $('#second_modal').css({display: 'none'});
+        $.ajax({
+            url: "/post/upload/",
+            data: fd,
+            method: "POST",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                console.log("성공");
+            },
+            error: function (Request, status, error) {
+                console.log("에러")
+            },
+            complete: function () {
+                console.log("완료");
+            }
         })
+        $('#first_modal').css({display: 'none'});
+        $('#second_modal').css({display: 'none'});
+    })
 
-        function uploadFiles(e) {
-            e.stopPropagation();
-            e.preventDefault();
+    function uploadFiles(e) {
+        e.stopPropagation();
+        e.preventDefault();
 
-            //1
+        //1
 
-            e.dataTransfer = e.originalEvent.dataTransfer; //2
-            files = e.target.files || e.dataTransfer.files;
-            console.log("파일을 올렸습니다." + files[0].name);
-            if (files.length > 1) {
-                alert('사진은 하나만 올려주세요.');
-                return;
-            }
-            if (files[0].type.match(/image.*/)) {
-                $('.img_upload_space').css({
-                    "background-image": "url(" + window
-                        .URL
-                        .createObjectURL(files[0]) + ")",
-                    "outline": "none",
-                    "background-size": "98%",
-                    "background-repeat": "no-repeat",
-                    "background-position": "center",
-                    "background-image.border-radius": "10px"
-                });
-                $('.picture_zone').css({display: 'none'})
-                $('#first_modal').css({display: 'none'});
-                $('#second_modal').css({display: 'flex'});
-                $('#blank_space').html({display: 'flex'});
-
-            } else {
-                alert('이미지가 아닙니다.');
-                return;
-            }
-
+        e.dataTransfer = e.originalEvent.dataTransfer; //2
+        files = e.target.files || e.dataTransfer.files;
+        console.log("파일을 올렸습니다." + files[0].name);
+        if (files.length > 1) {
+            alert('사진은 하나만 올려주세요.');
+            return;
         }
-    </script>
-    <!-- Optional JavaScript; choose one of the two! -->
+        if (files[0].type.match(/image.*/)) {
+            $('.img_upload_space').css({
+                "background-image": "url(" + window
+                    .URL
+                    .createObjectURL(files[0]) + ")",
+                "outline": "none",
+                "background-size": "98%",
+                "background-repeat": "no-repeat",
+                "background-position": "center",
+                "background-image.border-radius": "10px"
+            });
+            $('.picture_zone').css({display: 'none'})
+            $('#first_modal').css({display: 'none'});
+            $('#second_modal').css({display: 'flex'});
+            $('#blank_space').html({display: 'flex'});
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
+        } else {
+            alert('이미지가 아닙니다.');
+            return;
+        }
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!-- <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-    integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
-    crossorigin="anonymous"></script> <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
-    integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
-    crossorigin="anonymous"></script> -->
+    }
+</script>
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!-- <script
+src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+crossorigin="anonymous"></script> <script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+crossorigin="anonymous"></script> -->
 </body>
 </html>
