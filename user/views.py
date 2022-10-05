@@ -3,20 +3,49 @@ from .models import UserModel
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import auth
-
-
+from post.models import Feed
+from rest_framework.views import APIView
 
 def home_view(request):
     user = request.user.is_authenticated  
     if user:
-        return render(request, 'home.html')
+        all_feed = Feed.objects.all().order_by('-created_at')
+        return render(request, 'home.html',)
     else:
         return redirect('/sign_in')
 
+'''class prfile(APIView):
+    def get(self, request):
+        user = User.objects.filter(email=email).first()
+
+       
+
+        feed_object_list = Feed.objects.all().order_by('-id')  # select  * from content_feed;
+        feed_list = []
+
+        for feed in feed_object_list:
+            user = User.objects.filter(email=feed.email).first()
+            reply_object_list = Reply.objects.filter(feed_id=feed.id)
+            reply_list = []
+            for reply in reply_object_list:
+                user = User.objects.filter(email=reply.email).first()
+                reply_list.append(dict(reply_content=reply.reply_content,
+                                       nickname=user.nickname))
+            feed_list.append(dict(id=feed.id,
+                                  image=feed.image,
+                                  content=feed.content,
+                                  profile_image=user.profile_image,
+                                  nickname=user.nickname,
+                                  reply_list=reply_list,
+                                  ))
 
 
-def profile_view(request):    
-    return render(request, 'user/profile.html')
+        return render(request, "/profile.html", context = dict(feeds=feed_list, user=user))'''
+
+
+def profile_view(request): 
+    all_feed = Feed.objects.all().order_by('-created_at')   
+    return render(request, 'user/profile.html',{'feeds':all_feed})
 
 def sign_up(request) :
     if request.method == 'GET':
