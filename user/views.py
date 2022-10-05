@@ -9,7 +9,7 @@ from django.contrib import auth
 def home_view(request):
     user = request.user.is_authenticated  
     if user:
-        return redirect('/home')
+        return render(request, 'home.html')
     else:
         return redirect('/sign_in')
 
@@ -52,9 +52,10 @@ def sign_in_view(request):
         password = request.POST.get('password','')
      
         me = UserModel.objects.get(username=username) # 사용자 불러오기
-        if me.password == password:         
+        if me.password == password:  
+            auth.login(request, me)       
             request.session['user'] = me.username            
-            return render(request,'home.html')
+            return redirect('/home')
         else: 
             return render(request,'user/sign_in.html',{'error':'이메일 혹은 패스워드를 확인 해 주세요'}) 
     elif request.method == 'GET':
@@ -63,6 +64,11 @@ def sign_in_view(request):
             return redirect('/home')
         else:
             return render(request,'user/sign_in.html')
+
+@login_required
+def logout(request):
+    auth.logout(request)
+    return redirect('/sign_in')
 
 @login_required
 def user_view(request):

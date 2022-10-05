@@ -57,7 +57,7 @@ class UploadFeed(APIView):
         
         image =  uuid_name
         content = request.data.get('content')
-        user_id = request.data.get('user_id')
+        user_id = request.user.username
         profile_image = request.data.get('profile_image')
 
         Feed.objects.create(image = image, content=content, user_id=user_id, profile_image=profile_image)
