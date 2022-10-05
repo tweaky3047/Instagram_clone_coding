@@ -183,9 +183,8 @@
                         style="font-size: 30px; margin-right:10px; cursor : pointer;">
                         favorite
                     </span>
-                    <span
-                        class="material-symbols-rounded"
-                        style="font-size: 30px; margin-right:10px; cursor : pointer;">
+                    <span class="material-symbols-rounded filled" 
+                          style="font-size: 30px; margin-right:10px; cursor : pointer;"> 
                         account_circle
                     </span>
                 </div>
@@ -196,7 +195,7 @@
             style="display: flex;justify-content: center; align-items: center; flex-direction: column;text-align: center;padding-top: 90px;">
             <!--TOP BOX-->
             <div style="min-width:400px; width:1000px;display:flex; align-items: center;">
-                <div style="display:flex";width=200px" >
+                <div style="display=flex; min-width=200px" >
                     {% if user.profile_image %}
                         <img class="profile_img" src="{{ user.profile_image }}"/>
                     {% else %}

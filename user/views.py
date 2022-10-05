@@ -44,8 +44,12 @@ def post_view(request):
 
 
 def profile_view(request): 
-    all_feed = Feed.objects.all().order_by('-created_at')   
-    return render(request, 'user/profile.html',{'feeds':all_feed})
+    user = request.user.is_authenticated
+    if user:  
+        all_feed = Feed.objects.all().order_by('-created_at')   
+        return render(request, 'user/profile.html',{'feeds':all_feed})
+    else:
+        return redirect('/sign_in')
 
 def sign_up(request) :
     if request.method == 'GET':

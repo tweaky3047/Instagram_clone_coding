@@ -59,7 +59,7 @@ class UploadFeed(APIView):
         image = uuid_name
         content = request.data.get('content')
         user_id = request.user.username
-        profile_image = request.data.get('profile_image')
+        profile_image = request.user.profile_image
 
         Feed.objects.create(image=image, content=content,
                             user_id=user_id, profile_image=profile_image)
@@ -100,6 +100,7 @@ def post_detaild(request):
         my_post.content = request.POST.get('post', '')
         my_post.save()
         return redirect('/user')
+
 
 
 
