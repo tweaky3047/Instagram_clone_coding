@@ -6,13 +6,13 @@ from django.contrib import auth
 from post.models import Feed
 from rest_framework.views import APIView
 
-def home_view(request):
+def post_view(request):
     user = request.user.is_authenticated  
-    if user:
-        all_feed = Feed.objects.all().order_by('-created_at')
-        return render(request, 'home.html',)
-    else:
-        return redirect('/sign_in')
+    if request.method == 'GET':
+       
+        user_recommand_list = UserModel.objects.all().exclude(username=request.user.username)
+        feeds = Feed.objects.all().order_by('-created_at')
+        return render(request, 'home.html', {'user_recommand_list': user_recommand_list, 'feeds':feeds})
 
 '''class prfile(APIView):
     def get(self, request):
