@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+       
         {% csrf_token %}
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -284,7 +285,7 @@
                     <span
                         id="nav_bar_add_box"
                         class="material-symbols-rounded"
-                        style="font-size: 30px; margin-right:10px;">
+                        style="font-size: 30px; margin-right:10px; cursor: pointer">
                         add_box
                     </span>
 
@@ -710,15 +711,23 @@
                     <div
                         style="height: 7%; border-bottom: solid 2px gray; border-right: solid 2px gray; ">
                         <span class="material-symbols-outlined">
+                            
+                        </span>
+                        {% if user.profile_image %}
+                        <img class="profile_img" src="{{ user.profile_image }}"/>
+                    {% else %}
+                        <span
+                            class="material-symbols-outlined"
+                            style="font-size:30px; object-fit: cover;">
                             account_circle
                         </span>
-                        minsung_yun
+                    {% endif %}
+                    {{user.nickname}}
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">
-                            내용을 입력해주세요</label>
-                        <textarea
+                        
+                        <textarea placeholder: 내용을 입력해주세요.
                             id="exampleFormControlTextarea1"
                             style="height: 570px; border:none; resize: none;"
                             class="form-control"
