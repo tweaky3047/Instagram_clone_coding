@@ -30,9 +30,6 @@ def post_detail(request):
         return render(request,'post/post.html',{'comments' : comments})
 
 
-def post_detail(request):
-    return render(request, 'post/post_detail.html')
-
 def delete_post(request):
     pass
 
@@ -98,6 +95,9 @@ def post_detail(request):
         my_post.save()
         return redirect('/user')
 
-def post_view(request):
-    pass
-
+def home_view(request) :
+    all_feed = PostModel.objects.all().order_by('-created_at')
+        comments = CommentModel.objects.all().order_by('-created_at')
+        print('dfsdf')
+        images = Feed.objects.all()
+        return render(request, 'home.html',{'comments':comments, 'posts' : all_feed, 'images':images})
