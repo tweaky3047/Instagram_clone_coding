@@ -1,299 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        {% load static %}
-        <meta charset="UTF-8">
-        <title>Posts</title>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Posts</title>
 
-        <!--google material symbols-->
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <!--google material symbols-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-        <!-- Jquery -->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Jquery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-        <!-- Bootstrap CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-            crossorigin="anonymous"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 
-        <!--google material icon-->
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200"/>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <!--google material icon-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-        <style>
-            * {
-                font-family: 'helvetica neue', 'Apple SD Gothic Neo', Roboto, Helvetica, Arial, sans-serif;
-            }
+    <style>
+        * {
+            font-family: 'helvetica neue', 'Apple SD Gothic Neo', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-            body {
-                background-color: #fafafa;
-                padding: 0;
-                margin: 0;
-            }
+        body {
+            background-color: #fafafa;
+            padding: 0;
+            margin: 0;
+        }
 
-            p,
-            span {
-                font-size: 14px;
-            }
+        p,
+        span {
+            font-size: 14px;
+        }
 
-            /* general */
-            li,
-            ul {
-                margin: 0;
-                padding: 0;
-                list-style-type: none;
-                list-style-position: inside;
-            }
+        /* general */
+        li,
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            list-style-position: inside;
+        }
 
-            footer p {
-                margin-top: 18px;
-                font-size: 11px;
-                color: #c7c7c7;
-                line-height: 18px;
-            }
+        footer p {
+            margin-top: 18px;
+            font-size: 11px;
+            color: #c7c7c7;
+            line-height: 18px;
+        }
 
-            .pic {
-                border-radius: 100%;
-            }
+        .pic {
+            border-radius: 100%;
+        }
 
-            span.userID {
-                margin-right: 5px;
-            }
+        span.userID {
+            margin-right: 5px;
+        }
 
-            span.sub-span {
-                font-size: 12px;
-                color: #8e8e8e;
-            }
+        span.sub-span {
+            font-size: 12px;
+            color: #8e8e8e;
+        }
 
-            span.point-span {
-                font-weight: 500;
-                font-size: 14px;
-                color: #262626;
-            }
+        span.point-span {
+            font-weight: 500;
+            font-size: 14px;
+            color: #262626;
+        }
 
-            /* post_detail */
-            .post-detail {
-                display: flex;
-                width: 95vw;
-                height: 1110px;
-                margin: 0 auto;
-            }
+        /* post_detail */
+        .post-detail {
+            display: flex;
+            width: 95vw;
+            height: 1110px;
+            margin: 0 auto;
+        }
 
-            .post-description {
-                width: 35%;
-                height: 1110px;
-                top: 94px;
-                right: 10%;
-                margin: 0 auto;
-            }
+        .post-description {
+            width: 35%;
+            height: 1110px;
+            top: 94px;
+            right: 10%;
+            margin: 0 auto;
+        }
 
-            .description {
-                display: inline-block;
-                flex-direction: column;
-                margin: 20px;
-                height: 18px;
-            }
+        .description {
+            display: inline-block;
+            flex-direction: column;
+            margin: 20px;
+            height: 18px;
+        }
 
-            /* article */
-            header {
-                height: 60px;
-                padding: 0 16px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
+        /* article */
+        header {
+            height: 60px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-            .profile-of-article {
-                display: flex;
-                align-items: center;
-            }
+        .profile-of-article {
+            display: flex;
+            align-items: center;
+        }
 
-            .img-profile {
-                width: 32px;
-                height: 32px;
-                border: 1px solid #fafafa;
-                border-radius: 100%;
-            }
+        .img-profile {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #fafafa;
+            border-radius: 100%;
+        }
 
-            .main-id {
-                margin-left: 14px;
-            }
+        .main-id {
+            margin-left: 14px;
+        }
 
-            .icon-more {
-                justify-self: end;
-                justify-content: space-between;
-            }
+        .icon-more {
+            justify-self: end;
+            justify-content: space-between;
+        }
 
-            .icon-react {
-                width: 24px;
-                height: 24px;
-            }
+        .icon-react {
+            width: 24px;
+            height: 24px;
+        }
 
-            /* article text data */
-            .reaction {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
+        /* article text data */
+        .reaction {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
 
-            }
+        }
 
-            .liked-people {
-                display: flex;
-                height: 18px;
-                margin: 2px 0 8px;
-            }
+        .liked-people {
+            display: flex;
+            height: 18px;
+            margin: 2px 0 8px;
+        }
 
-            .liked-people img {
-                display: inline-block;
-                margin-right: 4px;
-                width: 20px;
-                height: 20px;
-                border: 1px solid #fafafa;
-            }
+        .liked-people img {
+            display: inline-block;
+            margin-right: 4px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fafafa;
+        }
 
-            .liked-people p {
-                display: inline-block;
-                color: #262626;
-                font-size: 14px;
-            }
+        .liked-people p {
+            display: inline-block;
+            color: #262626;
+            font-size: 14px;
+        }
 
-            .comments {
-                margin-top: 10px;
-                flex-direction: column;
-            }
+        .comments {
+            margin-top: 10px;
+            flex-direction: column;
+        }
 
-            ul.comments {
-                margin-top: 5px;
-            }
+        ul.comments {
+            margin-top: 5px;
+        }
 
-            ul.comments li {
-                height: 40px;
-                flex-direction: column;
-                justify-content: space-between;
-                color: #262626;
-                font-size: 14px;
-            }
+        ul.comments li {
+            height: 40px;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #262626;
+            font-size: 14px;
+        }
 
-            img.comment-heart {
-                width: 12px;
-                height: 12px;
-            }
+        img.comment-heart {
+            width: 12px;
+            height: 12px;
+        }
 
-            div.time-log span {
-                color: #8e8e8e;
-            }
+        div.time-log span {
+            color: #8e8e8e;
+        }
 
-            .hl {
-                border-top: 1px solid #DBDBDB;
-                width: 100%;
-            }
+        .hl {
+            border-top: 1px solid #DBDBDB;
+            width: 100%;
+        }
 
-            .material-symbols-rounded {
-                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
-            }
+        .material-symbols-rounded {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+        }
 
-            /* comment input */
-            .comment {
-                bottom: 0;
-                display: flex;
-                margin-top: 5%;
-                width: 90%;
+        /* comment input */
+        .comment {
+            bottom: 0;
+            display: flex;
+            margin-top: 5%;
+            width: 90%;
 
-            }
+        }
 
-            .input-comment {
-                font-size: 14px;
-                width: 80%;
-                height: 18px;
-                padding: 28px 16px;
-                border-style: none;
-                box-sizing: border-box;
-                color: #262626;
-            }
+        .input-comment {
+            font-size: 14px;
+            width: 80%;
+            height: 18px;
+            padding: 28px 16px;
+            border-style: none;
+            box-sizing: border-box;
+            color: #262626;
+        }
 
-            .input-comment:focus {
-                outline: none;
-            }
+        .input-comment:focus {
+            outline: none;
+        }
 
-            .input-comment::placeholder {
-                color: #8e8e8e;
-            }
+        .input-comment::placeholder {
+            color: #8e8e8e;
+        }
 
-            button.submit-comment {
-                color: #0095f6;
-                background-color: #ffffff;
-                border-style: none;
-                height: 56px;
-                padding: 4px;
-                font-size: 90%;
-                font-weight: 600;
-            }
+        button.submit-comment {
+            color: #0095f6;
+            background-color: #ffffff;
+            border-style: none;
+            height: 56px;
+            padding: 4px;
+            font-size: 90%;
+            font-weight: 600;
+        }
 
-            .submit-comment:disabled {
-                color: #B9DFFC;
-            }
+        .submit-comment:disabled {
+            color: #B9DFFC;
+        }
 
-            button.submit-comment:focus {
-                outline: none;
-            }
-            .wrap {
-                display: flex;
-                background-color: white;
-                border: #8e8e8e 1px solid;
-                margin-top: 1%;
-                margin-left: auto;
-                margin-right: auto;
-                justify-content: center;
-                width: 80vw;
-            }
-        </style>
-        
-    </head>
+        button.submit-comment:focus {
+            outline: none;
+        }
 
-    <body>
-        <div
-            class="post-detail"
-            style="display:flex; text_align : center; justify-content: center;">
-            <!-- post pic -->
-            <article class="wrap">
-                <div style="position:static; width:60%; height: 100%; ; background-color:black">
-                    <img
-                        style=" display:flex; width:100%; margin:160px 5px auto 0; "
-                        src="{% get_media_prefix %}{{feed.image}}"/>
-                </div>
-                <div class="post-description">
-                    <header>
-                        <div class="profile-of-article">
-                            <img
-                                class="img-profile pic"
-                                src="{% get_media_prefix %}{{userd.profile_image}}"
-                                alt="">
-                            <span class="userID main-id point-span">{{userd.nickname}}</span>
-                        </div>
-                        {% if feed.user_id == user.username%}
-                                    <div style="text-align: right">
-                                        <a href="/post/post/delete/{{ feed.id }}">
-                                            <span class="badge rounded-pill bg-danger">삭제</span>
-                                        </a>
-                                    </div>
-                        {% endif %}
-                        <img
-                            class="icon-react icon-more"
-                            src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png"
-                            alt="more">
-                    </header>
-                    <div class="hl"></div>
-                    <!-- description data -->
-                    <div class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{userd.profile_image}}" <span class="userID main-id point-span">{{userd.nickname}}</span>
+        .wrap {
+            display: flex;
+            background-color: white;
+            border: #8e8e8e 1px solid;
+            margin-top: 1%;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
+            width: 80vw;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="post-detail" style="display:flex; text_align : center; justify-content: center;">
+        <!-- post pic -->
+        <article class="wrap">
+            <div style="position:static; width:60%; height: 100%; ; background-color:black">
+                <img style=" display:flex; width:100%; margin:160px 5px auto 0; "
+                    src="{% get_media_prefix %}{{feed.image}}" />
+            </div>
+            <div class="post-description">
+                <header>
+                    <div class="profile-of-article">
+                        <img class="img-profile pic" src="{% get_media_prefix %}{{user.profile_image}}" alt="">
+                        <span class="userID main-id point-span">{{user.nickname}}</span>
+                    </div>
+                    <img class="icon-react icon-more"
+                        src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
+                </header>
+                <div class="hl"></div>
+                <!-- description data -->
+                <div style="width:100%;" class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{user.profile_image}}"
+                        <span class="userID main-id point-span">{{user.nickname}}</span>
+
                     <div class="user_description">{{feed.content}}</div>
                     <div class="time-log">
                         <span>{{feed.created_at}}</span>
@@ -301,49 +283,44 @@
 
                     <!--댓글 보여주기-->
                     {% for cm in comments %}
-                        <div class="comment-section" ~="~">
-                            <ul
-                                class="comments"
-                                style="justify-content: space-between; position: relative">
-                                <li>
-                                    <span><img
-                                        class="img-profile pic"
-                                        src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg"
-                                        alt="">
-                                        <span class="userID main-id point-span">{{cm.author}}</span>{{cm.comment}}</span>
-                                </li>
-                                <div class="time-log">
-                                    <span>{{cm.created_at|timesince}}전</span>
+                    <div class="comment-section" ~="~">
+                        <ul class="comments" style="justify-content: space-between; position: relative">
+                            <div style="display: flex;"><li>
+                                <span><img class="img-profile pic"
+                                        src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg" alt="">
+                                    <span class="userID main-id point-span">{{cm.author}}</span>{{cm.comment}}</span>
+                            </li>
+                            {% if feed.user_id == user.username %}
+                            <a href="{% url 'delete-comment' cm.id %}"><span class="badge rounded-pill bg-danger">삭제</span></a>
+                            {% endif %}</div>
+                            <div class="time-log">
+                                <span>{{cm.created_at|timesince}}전</span>
 
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                    {% endfor %}
+                            </div>
+                        </ul>
+                    </div>{% endfor %}
+                </div>
 
                 <div class="hl"></div>
                 <div
-                    style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px"></div>
+                    style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px 0 10px">
+                </div>
                 <div class="reaction">
 
                     <div class="time-log"></div>
 
                 </div>
-               
+
                 <!--댓글 작성-->
                 <form action="/post/post/comment/{{ feed.id }}" method="POST">
-                {% csrf_token %}
-                    <input
-                        name="input-comments"
-                        id="input-comments"
-                        class="input-comment"
-                        type="text"
+                    {% csrf_token %}
+                    <input name="input-comments" id="input-comments" class="input-comment" type="text"
                         placeholder="댓글을 작성해주세요"></input>
                     <button type="submit" class="submit-comment">게시</button>
                 </form>
 
-            
+
         </article>
-    </body>
+</body>
 
 </html>
