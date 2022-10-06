@@ -346,7 +346,7 @@
             fd.append('csrfmiddlewaretoken', "{{ csrf_token }}");
 
             $.ajax({
-                url: "/post/upload/",
+                url: "/post/post/upload/",
                 data: fd,
                 method: "POST",
                 processData: false,
