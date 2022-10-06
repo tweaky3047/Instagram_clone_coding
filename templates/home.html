@@ -392,12 +392,18 @@
                     <div
                         style="display: flex;align-items: center; margin: 0 10px">
                         <div class="box" style="width: 50px; height: 50px; background: #bdbdbd">
+                            {% if feed.profile_image %}
                             <img
                                 class="profile"
-                                src="{% get_media_prefix %}{{user.profile_image}}"/>
+                                src="{% get_media_prefix %}{{feed.profile_image}}"/>
+                            {% else %}
+                            <span class="material-symbols-outlined" style="font-size:50px; object-fit: cover;">
+                                account_circle
+                                </span>
+                            {% endif %}
                         </div>
                         <div style="margin: 0 10px; font-size: 14px;">
-                            <b>{{user.nickname}}</b>
+                            <b>{{feed.user_id}}</b>
                         </div>
                     </div>
 
@@ -476,9 +482,9 @@
                                 <span class="feed_name_txt">
                                     {{ user.last_name }}
                                 </span>
-                                <span class="name_content_txt">
+                                <div class="name_content_txt">
                                     {{ user.nickname }}
-                                </span>
+                                </div>
                             </div>
                         </div>
                                     </span>
@@ -508,7 +514,7 @@
                             {% if ul.profile_image %}
                                 <img class="profile_img" src="{{ ul.profile_image.url }}"/>
                             {% else %}
-                                    <span class="material-symbols-outlined" style="font-size:60px; object-fit: cover;">
+                                    <span class="material-symbols-outlined" style="font-size:40px; object-fit: cover;">
                                         account_circle
                                         </span>
                             {% endif %}
@@ -589,29 +595,25 @@
                 <div
                     class="img_upload_space"
                     style=" height: 785px;width: 500px; margin-left: 1px; padding-right: 5px; border-right: solid 2px gray; "></div>
-                <div style="display: flex; flex-direction: column; padding-left:0;  width: 40%">
+                <div style="display: flex; flex-direction: column;  width: 40%">
                     <div
-                        style="height: 7%; border-bottom: solid 2px gray; border-right: solid 2px gray; ">
-                        <span class="material-symbols-outlined"></span>
-                        {% if user.profile_image %}
-                        <img class="profile_img" src="{{ user.profile_image }}"/>
-                    {% else %}
+                        style="height: 7%; border-bottom: solid 2px gray; border-right: solid 2px gray; item_align:left ">
+                        
                         <span
                             class="material-symbols-outlined"
                             style="font-size:30px; object-fit: cover;">
                             account_circle
                         </span>
-                    {% endif %}
-                    {{user.nickname}}
+                        {{user.nickname}}
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">
-                            내용을 입력해주세요</label>
+                        
                         <textarea
                             id="exampleFormControlTextarea1"
                             style="height: 570px; border:none; resize: none;"
                             class="form-control"
+                            placeholder="내용을 입력해주세요"
                             rows="3"></textarea>
                     </div>
 
