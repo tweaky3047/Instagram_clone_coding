@@ -255,7 +255,7 @@
 </head>
 
 <body>
-    <div class="post-detail" style="display:flex; text_align : center; justify-content: center;">
+    <div class="post-detail" style="display:flex; justify-content: center;">
         <!-- post pic -->
         <article class="wrap">
             <div style="position:static; width:60%; height: 100%; ; background-color:black">
@@ -269,18 +269,16 @@
                         <span class="userID main-id point-span">{{userd.nickname}}</span>
                     </div>
                     {% if feed.user_id == user.username%}
-                    <div style="text-align: right">
+                    <div style="text-align: center;">
                         <a href="/post/post/delete/{{ feed.id }}">
-                            <span class="badge rounded-pill bg-danger">삭제</span>
+                            <span class="badge rounded-pill bg-primary">삭제</span>
                         </a>
                     </div>
                     {% endif %}
-                    <img class="icon-react icon-more"
-                        src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/more.png" alt="more">
                 </header>
                 <div class="hl"></div>
                 <!-- description data -->
-                <div style="width:100%;" class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{userd.profile_image}}"
+                <div style="width:90%;" class="description"><img class="img-profile pic" src="{% get_media_prefix %}{{userd.profile_image}}"
                         <span class="userID main-id point-span">{{userd.nickname}}</span>
 
                     <div class="user_description">{{feed.content}}</div>
@@ -292,13 +290,13 @@
                     {% for cm in comments %}
                     <div class="comment-section" ~="~">
                         <ul class="comments" style="justify-content: space-between; position: relative">
-                            <div style="display: flex;"><li>
+                            <div style="display: flex; justify-content: space-between;"><li>
                                 <span><img class="img-profile pic"
                                         src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/21/102583646.1.jpg" alt="">
                                     <span class="userID main-id point-span">{{cm.author}}</span>{{cm.comment}}</span>
                             </li>
                             {% if cm.author_id == user.id %}
-                            <a href="{% url 'delete-comment' cm.id %}"><span class="badge rounded-pill bg-danger">삭제</span></a>
+                            <a href="{% url 'delete-comment' cm.id %}"><span class="badge rounded-pill bg-primary">삭제</span></a>
                             {% endif %}</div>
                             <div class="time-log">
                                 <span>{{cm.created_at|timesince}}전</span>
