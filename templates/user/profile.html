@@ -227,11 +227,13 @@
         <div style="min-width:400px; width:1000px; display:flex; margin-top: 10px; height: 680px;">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 {% for feed in feeds %}
+                {% if feed.user_id ==  user.username %}
                 <div class="col">     
                     <div class="card">
                         <a href="/post/post/{{feed.id}}"> <img src="{% get_media_prefix %}{{ feed.image }}" class="card-img-top" style="height: 320px;"> </a>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
