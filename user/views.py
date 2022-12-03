@@ -116,7 +116,6 @@ def logout(request):
 @login_required
 def user_view(request):
     if request.method == 'GET':
-        # 사용자를 불러오기, exclude와 request.user.username 를 사용해서 '로그인 한 사용자'를 제외하기
         user_list = UserModel.objects.all().exclude(username=request.user.username)
         return render(request, 'user/user_list.html', {'user_list': user_list})
     
