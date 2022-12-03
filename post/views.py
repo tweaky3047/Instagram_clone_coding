@@ -9,9 +9,6 @@ from insta_clone.settings import MEDIA_ROOT
 from django.contrib.auth.decorators import login_required
 from user.models import UserModel
 
-# Create your views here.
-# class Post()
-
 
 def post_detail(request, id):
     if request.method == 'POST':
@@ -86,14 +83,6 @@ def upload_comment(request, id):
         print(comment)
         print(ct.post)
         return redirect('/post/post/'+str(id))
-
-
-# @login_required
-# def delete_comment(request, id):
-#     if request.method == 'GET':
-#         post = comment.post.id
-#         comment.delete()
-#         return redirect('/post/'+str(post))
 
 
 def post_detail(request, id):
